@@ -1,7 +1,9 @@
+import Navigation from './components/Navigation';
+
 function App() {
   return (
     <div>
-      <p className="text-sm">Hello</p>
+      <Navigation />
     </div>
   );
 }
