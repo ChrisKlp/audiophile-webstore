@@ -23,6 +23,8 @@ module.exports = {
     'react/react-in-jsx-scope': ['off'],
     'react/require-default-props': ['off'],
     '@typescript-eslint/no-unused-vars': ['warn'],
+    'react/button-has-type': ['warn'],
+    '@typescript-eslint/ban-types': ['warn'],
   },
   ignorePatterns: ['vite.config.ts', '*.cjs'],
 };
