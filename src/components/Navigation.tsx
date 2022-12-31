@@ -1,19 +1,25 @@
-/* eslint-disable no-empty-pattern */
-/* eslint-disable @typescript-eslint/ban-types */
-import logo from '../assets/shared/desktop/logo.svg';
-import iconHamburger from '../assets/shared/tablet/icon-hamburger.svg';
-import iconCart from '../assets/shared/desktop/icon-cart.svg';
+import logo from '@/assets/shared/desktop/logo.svg';
+import iconHamburger from '@/assets/shared/tablet/icon-hamburger.svg';
+import iconCart from '@/assets/shared/desktop/icon-cart.svg';
 
-type Props = {};
+type Props = {
+  transparent?: boolean;
+};
 
-export default function Navigation({}: Props) {
+export default function Navigation({ transparent = false }: Props) {
   return (
-    <nav className="flex h-[9rem] items-center justify-between bg-black py-[3.2rem] px-[2.4rem]">
+    <nav
+      className={`z-10 flex h-[9rem] items-center justify-between border-b-[1px] border-b-white/10 py-[3.2rem] px-[2.4rem] ${
+        transparent
+          ? 'absolute top-0 left-0 right-0 bg-transparent'
+          : 'bg-black'
+      } `}
+    >
       <button type="button">
         <img className="" src={iconHamburger} alt="icon hamburger" />
       </button>
       <img
-        className="block h-[2.5rem] w-[14.3rem]"
+        className="as block h-auto w-[14.3rem] flex-shrink-0"
         src={logo}
         alt="audiophile logo"
       />
