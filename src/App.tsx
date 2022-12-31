@@ -1,3 +1,4 @@
+import Categories from './components/Categories';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
 
@@ -6,6 +7,7 @@ function App() {
     <div>
       <Navigation transparent />
       <Hero />
+      <Categories />
     </div>
   );
 }

@@ -25,6 +25,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn'],
     'react/button-has-type': ['warn'],
     '@typescript-eslint/ban-types': ['warn'],
+    'import/extensions': ['off'],
   },
   ignorePatterns: ['vite.config.ts', '*.cjs'],
 };
