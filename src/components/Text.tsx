@@ -17,7 +17,7 @@ type Props = {
 
 const textVariants = {
   h1: 'text-[3.6rem] font-bold uppercase leading-[4rem] tracking-[0.12rem] md:text-[5.6rem] md:leading-[5.8rem] md:tracking-[0.2rem]',
-  h2: 'text-[3.6rem] font-bold uppercase leading-[4rem] tracking-[0.12rem] md:text-[4rem] md:leading-[4.4rem] md:tracking-[0.14rem]',
+  h2: 'text-[2.8rem] font-bold uppercase leading-[3.8rem] tracking-[0.1rem] md:text-[4rem] md:leading-[4.4rem] md:tracking-[0.14rem]',
   h3: 'text-[3.6rem] font-bold uppercase leading-[4rem] tracking-[0.12rem] md:text-[3.2rem] md:leading-[3.6rem] md:tracking-[0.17rem]',
   h4: 'text-[3.6rem] font-bold uppercase leading-[4rem] tracking-[0.12rem] md:text-[2.8rem] md:leading-[3.8rem] md:tracking-[0.2rem]',
   h5: 'text-[3.6rem] font-bold uppercase leading-[4rem] tracking-[0.12rem] md:text-[2.4rem] md:leading-[3.3rem] md:tracking-[0.17rem]',
