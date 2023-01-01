@@ -1,33 +1,35 @@
-/* eslint-disable import/extensions */
-/* eslint-disable no-empty-pattern */
-
-import Text from '@/components/Text';
-import Button from '@/components/Button';
 import imageHeader from '@/assets/home/mobile/image-header.jpg';
+import imageHeader_md from '@/assets/home/tablet/image-header.jpg';
+import imageHeader_xl from '@/assets/home/desktop/image-hero.jpg';
 
-/* eslint-disable @typescript-eslint/ban-types */
-type Props = {};
-
-function Hero({}: Props) {
+function Hero() {
   return (
-    <section className="relative z-0 h-[60rem] overflow-hidden bg-black">
-      <img
-        src={imageHeader}
-        className="absolute z-[-1] h-full w-full object-cover opacity-50"
-        alt="hero headphones"
-      />
-      <div className=" grid justify-items-center px-[2.4rem] pt-[19.8rem]">
-        <Text variant="overline" className="pb-[1.6rem] text-white/50">
-          New product
-        </Text>
-        <Text variant="h1" className="pb-[2.4rem] text-center text-white">
-          XX99 Mark II HeadphoneS
-        </Text>
-        <Text className="pb-[2.8rem] text-center text-white/75">
-          Experience natural, lifelike audio and exceptional build quality made
-          for the passionate music enthusiast.
-        </Text>
-        <Button as="link">See product</Button>
+    <section className="relative z-0 h-[60rem] overflow-hidden bg-black md:h-[72.9rem]">
+      <picture>
+        <source srcSet={imageHeader_xl} media="(min-width: 1024px)" />
+        <source srcSet={imageHeader_md} media="(min-width: 768px)" />
+        <img
+          src={imageHeader}
+          alt="hero headphones"
+          className="absolute z-[-1] h-full w-full object-cover opacity-50"
+        />
+      </picture>
+      <div className="c-container grid justify-items-center">
+        <div className="grid max-w-[37.9rem] justify-items-center pt-[19.8rem]">
+          <p className="text-overline pb-[1.6rem] text-white/50 md:pb-[2.4rem]">
+            New product
+          </p>
+          <h1 className="h1 pb-[2.4rem] text-center text-white">
+            XX99 Mark II HeadphoneS
+          </h1>
+          <p className="pb-[2.8rem] text-center text-base text-white/75 md:px-[1.5rem] md:pb-[4rem]">
+            Experience natural, lifelike audio and exceptional build quality
+            made for the passionate music enthusiast.
+          </p>
+          <a href="asd" className="btn">
+            See product
+          </a>
+        </div>
       </div>
     </section>
   );

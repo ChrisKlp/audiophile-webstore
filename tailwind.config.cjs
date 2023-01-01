@@ -5,6 +5,15 @@ module.exports = {
     borderRadius: {
       DEFAULT: '0.8rem',
     },
+    fontSize: {
+      base: [
+        '1.5rem',
+        {
+          lineHeight: '2.5rem',
+          fontWeight: '500',
+        },
+      ],
+    },
     extend: {
       colors: {
         white: '#ffffff',

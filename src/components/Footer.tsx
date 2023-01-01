@@ -1,4 +1,3 @@
-import Text from './Text';
 import logo from '@/assets/shared/desktop/logo.svg';
 import { ReactComponent as IconFacebook } from '@/assets/shared/desktop/icon-facebook.svg';
 import { ReactComponent as IconTwitter } from '@/assets/shared/desktop/icon-twitter.svg';
@@ -31,11 +30,11 @@ const socialMedia = [
 
 export default function Footer() {
   return (
-    <footer className="grid justify-items-center gap-[4.8rem] bg-black pb-[3.8rem]">
-      <div className="h-[0.4rem] w-[10rem] bg-orange" />
-      <div className="c-container grid justify-items-center gap-[4.8rem]">
+    <footer className="bg-black pb-[3.8rem] md:pb-[4.6rem]">
+      <div className="c-container grid justify-items-center gap-[4.8rem] md:justify-items-start md:gap-0">
+        <div className="h-[0.4rem] w-[10rem] bg-orange md:mb-[5.6rem]" />
         <img src={logo} alt="audiophile logo" />
-        <nav className="flex flex-col items-center gap-[1.6rem]">
+        <nav className="flex flex-col items-center gap-[1.6rem] md:my-[3.2rem] md:flex-row md:gap-[3.4rem]">
           {navigation.map(({ name, url }) => (
             <a
               key={url}
@@ -46,21 +45,27 @@ export default function Footer() {
             </a>
           ))}
         </nav>
-        <Text className="text-center text-white/50">
+        <p className="text-center text-base text-white/50 md:mb-[8rem] md:text-left">
           {`Audiophile is an all in one stop to fulfill your audio needs. We're a
         small team of music lovers and sound specialists who are devoted to
         helping you get the most out of personal audio. Come and visit our demo
         facility - we're open 7 days a week.`}
-        </Text>
-        <Text className="text-center font-bold text-white/50">
-          Copyright 2021. All Rights Reserved
-        </Text>
-        <div className="flex items-center justify-center gap-[1.6rem]">
-          {socialMedia.map(({ Component, url }) => (
-            <a href={url} key={url} className="[&>svg>path]:hover:fill-orange">
-              <Component className="[&>path]:duration-200 [&>path]:ease-in-out" />
-            </a>
-          ))}
+        </p>
+        <div className="w-full md:flex md:justify-between">
+          <p className="mb-[4.8rem] text-center text-base font-bold text-white/50 md:mb-0">
+            Copyright 2021. All Rights Reserved
+          </p>
+          <div className="flex items-center justify-center gap-[1.6rem]">
+            {socialMedia.map(({ Component, url }) => (
+              <a
+                href={url}
+                key={url}
+                className="[&>svg>path]:hover:fill-orange"
+              >
+                <Component className="[&>path]:duration-200 [&>path]:ease-in-out" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

@@ -27,4 +27,48 @@
       padding: 0 4rem;
     }
   }
+
+  .btn {
+    @apply inline-flex h-[4.8rem] w-[16rem] cursor-pointer items-center justify-center bg-orange text-[1.3rem] font-bold uppercase leading-[1.8rem] tracking-[0.1rem] text-white duration-200 ease-in-out hover:bg-lightOrange;
+  }
+
+  .btn-outline {
+    @apply btn border-[1px] border-black bg-transparent text-black hover:bg-black hover:text-white;
+  }
+
+  .btn-dark {
+    @apply btn bg-black text-white hover:bg-gray;
+  }
+
+  .h1 {
+    @apply text-[3.6rem] font-bold uppercase leading-[4rem] tracking-[0.12rem] md:text-[5.6rem] md:leading-[5.8rem] md:tracking-[0.2rem];
+  }
+
+  .h2 {
+    @apply text-[2.8rem] font-bold uppercase leading-[3.8rem] tracking-[0.1rem] md:text-[4rem] md:leading-[4.4rem] md:tracking-[0.14rem];
+  }
+
+  .h3 {
+    @apply text-[3.2rem] font-bold uppercase leading-[3.6rem] tracking-[0.17rem] md:text-[3.2rem] md:leading-[3.6rem] md:tracking-[0.17rem];
+  }
+
+  .h4 {
+    @apply text-[2.8rem] font-bold uppercase leading-[3.8rem] tracking-[0.2rem];
+  }
+
+  .h5 {
+    @apply text-[2.4rem] font-bold uppercase leading-[3.3rem] tracking-[0.17rem] md:text-[2.4rem] md:leading-[3.3rem] md:tracking-[0.17rem];
+  }
+
+  .h6 {
+    @apply text-[1.5rem] font-bold uppercase leading-[2rem] tracking-[0.1rem] xl:text-[1.8rem] xl:leading-[2.5rem] xl:tracking-[0.12rem];
+  }
+
+  .text-overline {
+    @apply text-[1.4rem] font-normal uppercase leading-[1.9rem] tracking-[1rem];
+  }
+
+  .text-small {
+    @apply text-[1.3rem] font-bold uppercase leading-[1.8rem] tracking-[0.1rem];
+  }
 }
