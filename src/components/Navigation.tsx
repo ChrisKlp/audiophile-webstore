@@ -8,7 +8,7 @@ type Props = {
 
 export default function Navigation({ transparent = false }: Props) {
   return (
-    <nav
+    <header
       className={`z-10 flex h-[9rem] items-center justify-between border-b-[1px] border-b-white/10 py-[3.2rem] px-[2.4rem] ${
         transparent
           ? 'absolute top-0 left-0 right-0 bg-transparent'
@@ -26,6 +26,6 @@ export default function Navigation({ transparent = false }: Props) {
       <button type="button">
         <img className="" src={iconCart} alt="icon cart" />
       </button>
-    </nav>
+    </header>
   );
 }

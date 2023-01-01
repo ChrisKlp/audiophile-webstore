@@ -13,3 +13,18 @@
     font-size: 1.6rem;
   }
 }
+
+@layer components {
+  .c-container {
+    margin: 0 auto;
+    min-width: 28rem;
+    max-width: 110rem;
+    padding: 0 2.4rem;
+  }
+
+  @screen md {
+    .c-container {
+      padding: 0 4rem;
+    }
+  }
+}

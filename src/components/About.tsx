@@ -2,8 +2,8 @@ import Text from '@/components/Text';
 
 export default function About() {
   return (
-    <section className="mb-[12rem]">
-      <div className="mb-[4rem] h-[30rem] rounded-[0.8rem] bg-[url('@/assets/shared/mobile/image-best-gear.jpg')] bg-cover bg-center bg-no-repeat" />
+    <section className="c-container mb-[12rem]">
+      <div className="mb-[4rem] h-[30rem] rounded bg-[url('@/assets/shared/mobile/image-best-gear.jpg')] bg-cover bg-center bg-no-repeat" />
       <Text variant="h2" className="mb-[3.2rem] text-center">
         Bringing you the <span className="text-orange">best</span> audio gear
       </Text>

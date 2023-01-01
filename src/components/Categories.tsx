@@ -25,7 +25,7 @@ const categoryList = [
 
 export default function Categories() {
   return (
-    <section className="grid gap-[1.6rem] pt-[4rem] pb-[12rem]">
+    <section className="c-container grid gap-[1.6rem] pt-[4rem] pb-[12rem]">
       {categoryList.map(({ image, name, url }) => (
         <div key={name} className="grid justify-items-center pb-[2.2rem]">
           <img
