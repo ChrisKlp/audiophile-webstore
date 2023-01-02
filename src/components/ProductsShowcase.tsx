@@ -1,7 +1,9 @@
 /* eslint-disable no-empty-pattern */
+import { Link } from 'react-router-dom';
 import image_zx9 from '@/assets/home/mobile/image-speaker-zx9.png';
 import image_zx9_md from '@/assets/home/tablet/image-speaker-zx9.png';
 import image_zx9_xl from '@/assets/home/desktop/image-speaker-zx9.png';
+import { productsPaths } from '@/navigation';
 
 export default function ProductsShowcase() {
   return (
@@ -24,18 +26,18 @@ export default function ProductsShowcase() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <a href="asd" className="btn-dark md:mt-[1.6rem]">
+          <Link to={productsPaths.zx9} className="btn-dark md:mt-[1.6rem]">
             See product
-          </a>
+          </Link>
         </div>
       </div>
 
       <div className="flex h-[32rem] items-center rounded bg-gray/20 bg-[url('@/assets/home/mobile/image-speaker-zx7.jpg')] bg-cover bg-right bg-no-repeat px-[2.4rem] md:bg-[url('@/assets/home/tablet/image-speaker-zx7.jpg')] md:px-[6.2rem] lg:bg-[url('@/assets/home/desktop/image-speaker-zx7.jpg')] lg:px-[9.5rem]">
         <div className="grid gap-[3.2rem]">
           <h4 className="h4 text-black">ZX7 SPEAKER</h4>
-          <a href="asd" className="btn-outline">
+          <Link to={productsPaths.zx7} className="btn-outline">
             See product
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -43,9 +45,9 @@ export default function ProductsShowcase() {
         <div className="h-[20rem] rounded bg-[url('@/assets/home/mobile/image-earphones-yx1.jpg')] bg-cover bg-center bg-no-repeat md:h-full md:bg-[url('@/assets/home/tablet/image-earphones-yx1.jpg')] lg:bg-[url('@/assets/home/desktop/image-earphones-yx1.jpg')]" />
         <div className="grid h-full content-center gap-[3.2rem] rounded bg-light200 px-[2.4rem] py-[4.1rem] md:px-[4.1rem] lg:px-[9.5rem]">
           <h4 className="h4 text-black">YX1 EARPHONES</h4>
-          <a href="asd" className="btn-outline">
+          <Link to={productsPaths.yx1} className="btn-outline">
             See product
-          </a>
+          </Link>
         </div>
       </div>
     </section>

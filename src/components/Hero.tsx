@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import imageHeader from '@/assets/home/mobile/image-header.jpg';
 import imageHeader_md from '@/assets/home/tablet/image-header.jpg';
 import imageHeader_xl from '@/assets/home/desktop/image-hero.jpg';
+import { productsPaths } from '@/navigation';
 
 function Hero() {
   return (
@@ -26,9 +28,9 @@ function Hero() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <a href="asd" className="btn">
+          <Link to={productsPaths.xx99_m2} className="btn">
             See product
-          </a>
+          </Link>
         </div>
       </div>
     </section>

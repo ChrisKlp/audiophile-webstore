@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import logo from '@/assets/shared/desktop/logo.svg';
 import { ReactComponent as IconFacebook } from '@/assets/shared/desktop/icon-facebook.svg';
 import { ReactComponent as IconTwitter } from '@/assets/shared/desktop/icon-twitter.svg';
 import { ReactComponent as IconInstagram } from '@/assets/shared/desktop/icon-instagram.svg';
-import navigation from '@/navigation';
+import { navigation } from '@/navigation';
 
 const socialMedia = [
   { Component: IconFacebook, url: 'facebook' },
@@ -21,14 +22,14 @@ export default function Footer() {
           className="md:col-[1/-1] lg:col-[1/2]"
         />
         <nav className="flex flex-col items-center gap-[1.6rem] md:col-[1/-1] md:my-[3.2rem] md:flex-row md:gap-[3.4rem] lg:col-[-2/-1] lg:my-0 lg:mb-[3.6rem] lg:justify-self-end">
-          {navigation.map(({ name, url }) => (
-            <a
-              key={url}
-              href={url}
+          {navigation.map(({ name, path }) => (
+            <Link
+              key={path}
+              to={path}
               className="text-[1.3rem] font-bold uppercase leading-[2.5rem] tracking-[0.2rem] text-white duration-200 ease-in-out hover:text-orange"
             >
               {name}
-            </a>
+            </Link>
           ))}
         </nav>
         <p className="text-center text-base text-white/50 md:col-[1/-1] md:mb-[8rem] md:text-left lg:col-[1/2] lg:mb-0">

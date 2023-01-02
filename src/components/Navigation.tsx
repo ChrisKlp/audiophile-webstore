@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '@/assets/shared/desktop/logo.svg';
 import iconHamburger from '@/assets/shared/tablet/icon-hamburger.svg';
 import iconCart from '@/assets/shared/desktop/icon-cart.svg';
-import navigation from '@/navigation';
-import Categories from './Categories';
+import { navigation } from '@/navigation';
+import Categories from '@/components/Categories';
 import useOnClickOutside from '@/hooks/useOnClickOutside';
 
 type Props = {
@@ -22,7 +23,7 @@ export default function Navigation({ transparent = false }: Props) {
   return (
     <header
       ref={ref}
-      className={`z-10 h-[9rem] ${
+      className={`z-10 h-[9rem] lg:h-auto ${
         transparent
           ? `absolute top-0 left-0 right-0 ${
               isOpen ? 'bg-black lg:bg-transparent' : 'bg-transparent'
@@ -35,26 +36,26 @@ export default function Navigation({ transparent = false }: Props) {
           <button type="button" className="lg:hidden" onClick={onToggle}>
             <img className="" src={iconHamburger} alt="icon hamburger" />
           </button>
-          <div className="md:ml-[4.2rem] md:grow lg:ml-0">
+          <Link to="/" className="md:ml-[4.2rem] md:grow lg:ml-0">
             <img
               className="h-auto w-[14.3rem] flex-shrink-0"
               src={logo}
               alt="audiophile logo"
             />
-          </div>
+          </Link>
           <button type="button">
             <img className="" src={iconCart} alt="icon cart" />
           </button>
         </div>
         <nav className="absolute top-1/2 left-1/2 hidden -translate-y-1/2 -translate-x-1/2 items-center justify-center gap-[3.4rem] pb-[0.4rem] lg:flex">
-          {navigation.map(({ name, url }) => (
-            <a
-              key={url}
-              href={url}
+          {navigation.map(({ name, path }) => (
+            <Link
+              key={path}
+              to={path}
               className="text-[1.3rem] font-bold uppercase leading-[2.5rem] tracking-[0.2rem] text-white duration-200 ease-in-out hover:text-orange"
             >
               {name}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="h-[1px] w-full bg-white/10" />
