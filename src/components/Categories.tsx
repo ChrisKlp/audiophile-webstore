@@ -24,26 +24,29 @@ const categoryList = [
 
 export default function Categories() {
   return (
-    <section className="c-container grid gap-[1.6rem] pt-[4rem] pb-[12rem] md:grid-flow-col md:gap-[1rem] md:py-[9.8rem]">
+    <section className="c-container grid gap-[1.6rem] pt-[4rem] pb-[12rem] md:grid-flow-col md:gap-[1rem] md:py-[9.8rem] lg:gap-[3rem] lg:pt-[12rem] lg:pb-[16.8rem]">
       {categoryList.map(({ image, name, url }) => (
         <div
           key={name}
-          className="grid grid-rows-[1fr_auto_auto] justify-items-center pb-[2.2rem]"
+          className="relative grid grid-rows-[3fr_5fr_auto] justify-items-center"
         >
           <img
             src={image}
-            className="w-1/2 max-w-[22.4rem] md:w-3/4"
+            className="row-[1/3] w-1/2 max-w-[22.4rem] md:w-3/4 md:self-center"
             alt={`${name} category`}
           />
-          <h6 className="h6 mb-[1.7rem]">{name}</h6>
-          <a href={url} className="group">
-            <span className="flex items-center gap-[1.2rem]">
-              <span className="text-[1.3rem] font-bold uppercase leading-[1.8rem] tracking-[0.1rem] text-black/50 duration-200 ease-in-out group-hover:text-orange">
-                shop
+          <div className="row-[3/4] grid justify-items-center pb-[2.2rem] lg:pb-[3rem]">
+            <h6 className="h6 mb-[1.7rem]">{name}</h6>
+            <a href={url} className="group">
+              <span className="flex items-center gap-[1.2rem]">
+                <span className="text-[1.3rem] font-bold uppercase leading-[1.8rem] tracking-[0.1rem] text-black/50 duration-200 ease-in-out group-hover:text-orange">
+                  shop
+                </span>
+                <img src={iconArrowRight} alt="icon arrow right" />
               </span>
-              <img src={iconArrowRight} alt="icon arrow right" />
-            </span>
-          </a>
+            </a>
+          </div>
+          <div className="absolute z-[-1] row-[2/4] h-full w-full rounded bg-light200" />
         </div>
       ))}
     </section>

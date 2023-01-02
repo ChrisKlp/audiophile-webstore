@@ -61,7 +61,7 @@
   }
 
   .h6 {
-    @apply text-[1.5rem] font-bold uppercase leading-[2rem] tracking-[0.1rem] xl:text-[1.8rem] xl:leading-[2.5rem] xl:tracking-[0.12rem];
+    @apply text-[1.5rem] font-bold uppercase leading-[2rem] tracking-[0.1rem] lg:text-[1.8rem] lg:leading-[2.5rem] lg:tracking-[0.12rem];
   }
 
   .text-overline {
