@@ -26,6 +26,7 @@ module.exports = {
     'react/button-has-type': ['warn'],
     '@typescript-eslint/ban-types': ['warn'],
     'import/extensions': ['off'],
+    'jsx-a11y/no-static-element-interactions': ['off'],
   },
   ignorePatterns: ['vite.config.ts', '*.cjs'],
 };
