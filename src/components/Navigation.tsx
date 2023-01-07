@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { twMerge } from 'tailwind-merge';
 import logo from '@/assets/shared/desktop/logo.svg';
 import iconHamburger from '@/assets/shared/tablet/icon-hamburger.svg';
 import iconCart from '@/assets/shared/desktop/icon-cart.svg';
@@ -23,15 +24,17 @@ export default function Navigation({ transparent = false }: Props) {
   return (
     <header
       ref={ref}
-      className={`z-10 h-[9rem] lg:h-auto ${
-        transparent
-          ? `absolute top-0 left-0 right-0 ${
-              isOpen ? 'bg-black lg:bg-transparent' : 'bg-transparent'
-            }`
-          : 'bg-black'
-      } `}
+      className={twMerge(
+        `relative z-10 h-[9rem] lg:h-auto ${
+          transparent
+            ? `absolute top-0 left-0 right-0 ${
+                isOpen ? 'bg-black lg:bg-transparent' : 'bg-transparent'
+              }`
+            : 'bg-black'
+        } `
+      )}
     >
-      <div className="c-container relative">
+      <div className="c-container">
         <div className="flex items-center justify-between py-[3.2rem] md:justify-start lg:pt-[3.2rem] lg:pb-[3.6rem]">
           <button type="button" className="lg:hidden" onClick={onToggle}>
             <img className="" src={iconHamburger} alt="icon hamburger" />
@@ -63,7 +66,10 @@ export default function Navigation({ transparent = false }: Props) {
       {!!isOpen && (
         <div className="lg:hidden">
           <nav className="animate-fadeIn rounded-b-[0.8rem] bg-white">
-            <Categories className="pb-[3.5rem] pt-[3.2rem] md:pb-[6.7rem] md:pt-[5.6rem]" />
+            <Categories
+              className="pb-[3.5rem] pt-[3.2rem] md:pb-[6.7rem] md:pt-[5.6rem]"
+              onClick={onClose}
+            />
           </nav>
           <div
             className="fixed top-0 left-0 bottom-0 right-0 z-[-1] animate-fadeIn bg-black/40"

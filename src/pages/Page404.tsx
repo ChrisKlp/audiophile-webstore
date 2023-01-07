@@ -1,15 +1,17 @@
 /* eslint-disable no-console */
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
-import Layout from '@/components/Layout';
+import Footer from '@/components/Footer';
+import Navigation from '@/components/Navigation';
 
 export default function Page404() {
   const error = useRouteError();
   console.error(error);
 
   return (
-    <Layout clean>
-      <section className="grid w-full place-items-center bg-black/95 bg-[url('@/assets/home/desktop/pattern-circles.svg')] bg-cover bg-center bg-no-repeat">
-        <div className="c-container grid w-full place-items-center gap-4 py-80">
+    <>
+      <Navigation />
+      <main className="grid w-full place-items-center bg-black/95 bg-[url('@/assets/home/desktop/pattern-circles.svg')] bg-cover bg-center bg-no-repeat">
+        <section className="c-container grid w-full place-items-center gap-4 py-80">
           <h1 className="h1 text-white">Oops!</h1>
           <p className="h5 mb-10 text-center font-light lowercase text-white/50">
             Sorry, an unexpected error has occurred.
@@ -25,8 +27,9 @@ export default function Page404() {
               )}
             </>
           )}
-        </div>
-      </section>
-    </Layout>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }

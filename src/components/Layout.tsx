@@ -1,27 +1,21 @@
-import React from 'react';
-import { ScrollRestoration } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useMatches } from 'react-router-dom';
 import About from '@/components/About';
 import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
+import { TLayoutConfig } from '@/models';
 
-type Props = {
-  transparentNav?: boolean;
-  clean?: boolean;
-  children?: React.ReactNode;
-};
+export default function Layout() {
+  const matches = useMatches();
+  const data = matches.find((match) => Boolean(match.data))
+    ?.data as TLayoutConfig;
 
-export default function Layout({
-  transparentNav = false,
-  clean = false,
-  children,
-}: Props) {
   return (
     <>
-      <Navigation transparent={transparentNav} />
+      <Navigation transparent={data?.transparentNav} />
       <main>
-        {children}
-        {!clean && <About />}
+        <Outlet />
       </main>
+      {!data?.clean && <About />}
       <Footer />
       <ScrollRestoration />
     </>

@@ -26,9 +26,10 @@ const categories = navigation.slice(1, navigation.length).map((item) => {
 
 type Props = {
   className?: string;
+  onClick?: () => void;
 };
 
-export default function Categories({ className }: Props) {
+export default function Categories({ className, onClick }: Props) {
   return (
     <section
       className={twMerge(
@@ -40,6 +41,7 @@ export default function Categories({ className }: Props) {
         <Link
           to={path}
           key={name}
+          onClick={onClick}
           className="group relative z-[0] grid grid-rows-[3fr_5fr_auto] justify-items-center"
         >
           {image && (

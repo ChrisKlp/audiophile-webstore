@@ -5,25 +5,6 @@ export const routes = {
   checkout: '/checkout',
 };
 
-export const navigation = [
-  {
-    name: 'home',
-    path: routes.home,
-  },
-  {
-    name: 'headphones',
-    path: `${routes.category}/headphones`,
-  },
-  {
-    name: 'speakers',
-    path: `${routes.category}/speakers`,
-  },
-  {
-    name: 'earphones',
-    path: `${routes.category}/earphones`,
-  },
-];
-
 export const productsPaths = {
   xx59: `${routes.product}/xx59-headphones`,
   xx99_m1: `${routes.product}/xx99-mark-one-headphones`,
@@ -32,3 +13,28 @@ export const productsPaths = {
   zx7: `${routes.product}/zx7-speaker`,
   yx1: `${routes.product}/yx1-earphones`,
 };
+
+export const categoryPaths = {
+  headphones: `${routes.category}/headphones`,
+  speakers: `${routes.category}/speakers`,
+  earphones: `${routes.category}/earphones`,
+};
+
+export const navigation = [
+  {
+    name: 'home',
+    path: routes.home,
+  },
+  {
+    name: 'headphones',
+    path: categoryPaths.headphones,
+  },
+  {
+    name: 'speakers',
+    path: categoryPaths.speakers,
+  },
+  {
+    name: 'earphones',
+    path: categoryPaths.earphones,
+  },
+];
