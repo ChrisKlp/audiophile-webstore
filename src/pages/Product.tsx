@@ -1,8 +1,8 @@
 import { useLoaderData } from 'react-router-dom';
-import { TProductData } from '@/models';
+import { TProductLoaderData } from '@/models';
 
 export default function Product() {
-  const product = useLoaderData() as TProductData;
+  const product = useLoaderData() as TProductLoaderData;
 
   return (
     <section className="c-container">

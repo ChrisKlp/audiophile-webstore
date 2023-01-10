@@ -1,3 +1,7 @@
+export type TProductLoaderData = {
+  images: TProductImagesGroup;
+} & TProductData;
+
 export type TProductData = {
   featured: string;
   name: string;
@@ -13,4 +17,16 @@ export type TProductData = {
 export type TLayoutConfig = {
   transparentNav?: boolean;
   clean?: boolean;
+};
+
+export type TProductImageSizes = {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+};
+
+export type TProductImagesGroup = {
+  product: TProductImageSizes;
+  preview: TProductImageSizes;
+  gallery: Record<string | number, TProductImageSizes>;
 };

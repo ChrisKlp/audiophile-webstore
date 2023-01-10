@@ -7,8 +7,7 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom';
-import categoryLoader from '@/assets/utils/categoryLoader';
-import productLoader from '@/assets/utils/productLoader';
+
 import Layout from '@/components/Layout';
 import { routes } from '@/navigation';
 import Category from '@/pages/Category';
@@ -16,6 +15,7 @@ import Home from '@/pages/Home';
 import Page404 from '@/pages/Page404';
 import Product from '@/pages/Product';
 import './index.css';
+import { categoryLoader, productLoader } from './utils/route-loaders';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
