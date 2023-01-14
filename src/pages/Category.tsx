@@ -2,44 +2,48 @@ import { Link, useLoaderData, useParams } from 'react-router-dom';
 import { TCategoryLoaderData } from '@/models';
 import { routes } from '@/navigation';
 import { getUrl } from '@/utils/utils';
+import BgPicture from '@/components/BgPicture';
 
 export default function Category() {
   const { categoryId } = useParams();
   const products = useLoaderData() as TCategoryLoaderData;
+  const sortedProducts = [...products].sort((a, b) =>
+    a.slug > b.slug ? -1 : 1
+  );
 
   return (
-    <section className="c-container">
-      <h1 className="h1">Category {categoryId}</h1>
-      {products.map((product) => (
-        <section
-          key={product.slug}
-          className="mb-10 grid justify-items-center bg-gray/20 p-10"
-        >
-          <picture>
-            <source
-              srcSet={getUrl(product.images.preview.desktop)}
-              media="(min-width: 1024px)"
-            />
-            <source
-              srcSet={getUrl(product.images.preview.tablet)}
-              media="(min-width: 768px)"
-            />
-            <img
-              src={getUrl(product.images.preview.mobile)}
-              alt={`${product.name}`}
-              className=""
-            />
-          </picture>
-          {product.featured && (
-            <p className="text-overline text-center">{product.featured}</p>
-          )}
-          <h2 className="h2 text-center">{product.name}</h2>
-          <p className="mb-10 text-center text-base">{product.description}</p>
-          <Link to={`${routes.product}/${product.slug}`} className="btn">
-            See product
-          </Link>
-        </section>
-      ))}
-    </section>
+    <>
+      <section className="mb-[6.4rem] grid h-[10.2rem] items-center bg-black">
+        <h1 className="h2 text-center text-white">{categoryId}</h1>
+      </section>
+      <div className="c-container">
+        <div className="mb-[12rem] grid gap-[12rem]">
+          {sortedProducts.map((product) => (
+            <section key={product.slug}>
+              <BgPicture
+                alt={product.name}
+                images={product.images.preview}
+                wrapperStyle="mb-[4rem] w-full h-[35.2rem] rounded bg-light200"
+                imageStyle="h-full"
+              />
+              <div className="grid justify-items-center gap-[2.4rem]">
+                {product.featured && (
+                  <span className="text-overline block text-orange">
+                    {product.featured}
+                  </span>
+                )}
+                <h2 className="h2 text-center">{product.name}</h2>
+                <p className="text-center text-base text-black/50">
+                  {product.description}
+                </p>
+                <Link to={`${routes.product}/${product.slug}`} className="btn">
+                  See product
+                </Link>
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

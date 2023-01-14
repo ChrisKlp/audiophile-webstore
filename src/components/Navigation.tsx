@@ -61,6 +61,8 @@ export default function Navigation({ transparent = false }: Props) {
             </Link>
           ))}
         </nav>
+      </div>
+      <div className="md:c-container">
         <div className="h-[1px] w-full bg-white/10" />
       </div>
       {!!isOpen && (

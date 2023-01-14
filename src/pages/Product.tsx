@@ -1,8 +1,9 @@
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
-import { TProductLoaderData } from '@/models';
-import { formatPrice, getUrl } from '@/utils/utils';
+import BgPicture from '@/components/BgPicture';
 import Categories from '@/components/Categories';
+import { TProductLoaderData } from '@/models';
 import { routes } from '@/navigation';
+import { formatPrice } from '@/utils/utils';
 
 export default function Product() {
   const { product, related } = useLoaderData() as TProductLoaderData;
@@ -21,23 +22,12 @@ export default function Product() {
 
         {/* PRODUCT HEADER */}
         <section className="mb-[8.8rem]">
-          <div className="relative mb-[4rem] h-[32.7rem] overflow-hidden rounded bg-light200">
-            <picture>
-              <source
-                srcSet={getUrl(product.images.product.desktop)}
-                media="(min-width: 1024px)"
-              />
-              <source
-                srcSet={getUrl(product.images.product.tablet)}
-                media="(min-width: 768px)"
-              />
-              <img
-                src={getUrl(product.images.product.mobile)}
-                alt={`${product.name}`}
-                className="absolute top-1/2 left-1/2 h-full -translate-x-1/2 -translate-y-1/2 object-cover"
-              />
-            </picture>
-          </div>
+          <BgPicture
+            alt={product.name}
+            images={product.images.product}
+            wrapperStyle="mb-[4rem] h-[32.7rem] bg-light200"
+            imageStyle="h-full"
+          />
           <div className="grid gap-[3.2rem]">
             {product.featured && (
               <span className="text-overline block text-orange">
@@ -93,28 +83,15 @@ export default function Product() {
         <div className="mb-[12rem] grid gap-[2rem]">
           {Object.entries(product.images.gallery).map(
             ([imageName, gallery], index) => (
-              <div
+              <BgPicture
                 key={imageName}
-                className={`relative ${
+                alt={imageName}
+                images={gallery}
+                wrapperStyle={`${
                   index === 2 ? 'h-[36.8rem]' : 'h-[17.4rem]'
-                } overflow-hidden rounded bg-light200`}
-              >
-                <picture>
-                  <source
-                    srcSet={getUrl(gallery.desktop)}
-                    media="(min-width: 1024px)"
-                  />
-                  <source
-                    srcSet={getUrl(gallery.tablet)}
-                    media="(min-width: 768px)"
-                  />
-                  <img
-                    src={getUrl(gallery.mobile)}
-                    alt={imageName}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
-                  />
-                </picture>
-              </div>
+                } bg-light200 rounded`}
+                imageStyle="w-full"
+              />
             )
           )}
         </div>
@@ -125,23 +102,12 @@ export default function Product() {
           <div className="flex flex-col gap-[5.6rem]">
             {related.map((rProduct) => (
               <div key={rProduct.slug}>
-                <div className="relative mb-[3.2rem] h-[12rem] overflow-hidden rounded bg-light200">
-                  <picture>
-                    <source
-                      srcSet={getUrl(rProduct.images.product.desktop)}
-                      media="(min-width: 1024px)"
-                    />
-                    <source
-                      srcSet={getUrl(rProduct.images.product.tablet)}
-                      media="(min-width: 768px)"
-                    />
-                    <img
-                      src={getUrl(rProduct.images.product.mobile)}
-                      alt={rProduct.shortName}
-                      className="absolute top-1/2 left-1/2 h-full -translate-x-1/2 -translate-y-1/2 object-cover"
-                    />
-                  </picture>
-                </div>
+                <BgPicture
+                  alt={rProduct.shortName}
+                  images={rProduct.images.product}
+                  wrapperStyle="mb-[3.2rem] h-[12rem] rounded bg-light200"
+                  imageStyle="h-full"
+                />
                 <div className="grid justify-items-center">
                   <h3 className="h3 mb-[3.2rem] text-center">
                     {rProduct.shortName}
