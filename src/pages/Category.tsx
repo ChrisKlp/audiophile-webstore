@@ -1,14 +1,11 @@
 import { Link, useLoaderData, useParams } from 'react-router-dom';
-import { TProductLoaderData } from '@/models';
+import { TCategoryLoaderData } from '@/models';
 import { routes } from '@/navigation';
-
-function getUrl(path: string) {
-  return new URL(path, import.meta.url).href;
-}
+import { getUrl } from '@/utils/utils';
 
 export default function Category() {
   const { categoryId } = useParams();
-  const products = useLoaderData() as TProductLoaderData[];
+  const products = useLoaderData() as TCategoryLoaderData;
 
   return (
     <section className="c-container">

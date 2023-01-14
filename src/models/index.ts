@@ -1,10 +1,18 @@
 export type TProductLoaderData = {
+  product: TProductFullData;
+  related: TProductFullData[];
+};
+
+export type TCategoryLoaderData = TProductFullData[];
+
+export type TProductFullData = TProductData & {
   images: TProductImagesGroup;
-} & TProductData;
+};
 
 export type TProductData = {
   featured: string;
   name: string;
+  shortName: string;
   slug: string;
   category: string;
   description: string;

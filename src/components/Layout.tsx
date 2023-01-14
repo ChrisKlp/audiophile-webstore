@@ -14,8 +14,8 @@ export default function Layout() {
       <Navigation transparent={data?.transparentNav} />
       <main>
         <Outlet />
+        {!data?.clean && <About />}
       </main>
-      {!data?.clean && <About />}
       <Footer />
       <ScrollRestoration />
     </>
