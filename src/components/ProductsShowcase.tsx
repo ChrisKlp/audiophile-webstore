@@ -3,7 +3,17 @@ import { Link } from 'react-router-dom';
 import image_zx9 from '@/assets/home/mobile/image-speaker-zx9.png';
 import image_zx9_md from '@/assets/home/tablet/image-speaker-zx9.png';
 import image_zx9_xl from '@/assets/home/desktop/image-speaker-zx9.png';
+import image_yx1 from '@/assets/home/mobile/image-earphones-yx1.jpg';
+import image_yx1_md from '@/assets/home/tablet/image-earphones-yx1.jpg';
+import image_yx1_xl from '@/assets/home/desktop/image-earphones-yx1.jpg';
 import { productsPaths } from '@/navigation';
+import BgPicture from './BgPicture';
+
+const yx1Images = {
+  mobile: image_yx1,
+  tablet: image_yx1_md,
+  desktop: image_yx1_xl,
+};
 
 export default function ProductsShowcase() {
   return (
@@ -42,7 +52,12 @@ export default function ProductsShowcase() {
       </div>
 
       <div className="grid gap-[2.4rem] md:h-[32rem] md:grid-flow-col md:grid-cols-2 md:items-center md:gap-[1.1rem]">
-        <div className="h-[20rem] rounded bg-[url('@/assets/home/mobile/image-earphones-yx1.jpg')] bg-cover bg-center bg-no-repeat md:h-full md:bg-[url('@/assets/home/tablet/image-earphones-yx1.jpg')] lg:bg-[url('@/assets/home/desktop/image-earphones-yx1.jpg')]" />
+        <BgPicture
+          alt="YX1 EARPHONES"
+          images={yx1Images}
+          wrapperStyle="w-full h-[20rem] rounded md:h-full"
+          imageStyle="w-full h-full"
+        />
         <div className="grid h-full content-center gap-[3.2rem] rounded bg-light200 px-[2.4rem] py-[4.1rem] md:px-[4.1rem] lg:px-[9.5rem]">
           <h4 className="h4 text-black">YX1 EARPHONES</h4>
           <Link to={productsPaths.yx1} className="btn-outline">

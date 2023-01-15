@@ -16,7 +16,7 @@ export default function About() {
         alt="about - best gear"
         images={images}
         wrapperStyle="mb-[4rem] h-[30rem] rounded w-full md:mb-[6.3rem] lg:order-last lg:mb-0 lg:h-full"
-        imageStyle=""
+        imageStyle="w-full h-full"
       />
       <div className="max-w-[57.3rem] lg:max-w-[44.5rem]">
         <h2 className="h2 mb-[3.2rem] text-center lg:text-left">
