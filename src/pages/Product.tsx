@@ -1,4 +1,5 @@
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import BgPicture from '@/components/BgPicture';
 import Categories from '@/components/Categories';
 import { TProductLoaderData } from '@/models';
@@ -8,40 +9,67 @@ import { formatPrice } from '@/utils/utils';
 export default function Product() {
   const { product, related } = useLoaderData() as TProductLoaderData;
   const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
+
+  function handleQuantityClick(isIncrease = true) {
+    let value = 1;
+    if (!isIncrease) value = -1;
+    setQuantity((state) => state + value);
+  }
 
   return (
     <>
       <div className="c-container">
         <button
           type="button"
-          className="mb-[2.4rem] pt-[1.6rem] text-base opacity-50"
+          className="mb-[2.4rem] pt-[1.6rem] text-base opacity-50 duration-200 ease-in-out hover:text-orange hover:opacity-100 md:pt-[3.3rem]"
           onClick={() => navigate(-1)}
         >
           Go Back
         </button>
 
         {/* PRODUCT HEADER */}
-        <section className="mb-[8.8rem]">
+        <section className="mb-[8.8rem] md:mb-[12rem] md:grid md:grid-flow-col md:grid-cols-[1fr_auto] md:gap-[6.9rem] lg:mb-[16rem] lg:grid-cols-2 lg:gap-[3rem]">
           <BgPicture
             alt={product.name}
             images={product.images.product}
-            wrapperStyle="mb-[4rem] h-[32.7rem] bg-light200"
-            imageStyle="h-full"
+            wrapperStyle="mb-[4rem] h-[32.7rem] rounded bg-light200 md:w-full md:h-[48rem] md:mb-0 lg:h-[56rem]"
+            imageStyle="h-full md:w-full lg:object-contain"
           />
-          <div className="grid gap-[3.2rem]">
+          <div className="grid gap-[2.4rem] md:w-[34rem] md:content-center lg:w-[44.5rem] lg:gap-[3.2rem] lg:justify-self-end">
             {product.featured && (
-              <span className="text-overline block text-orange">
+              <span className="text-overline block text-orange md:mb-[-1.6rem]">
                 {product.featured}
               </span>
             )}
-            <h2 className="h2 md:text-[2.8rem] md:leading-[3.2rem] md:tracking-[0.1rem]">
+            <h2 className="h2 md:text-[2.8rem] md:leading-[3.2rem] md:tracking-[0.1rem] lg:text-[4rem] lg:leading-[4.4rem] lg:tracking-[0.14rem]">
               {product.name}
             </h2>
             <p className="text-base text-black/50">{product.description}</p>
-            <p className="mb-[0.7rem] text-[1.8rem] font-bold uppercase leading-[2.5rem] tracking-[0.13rem]">
+            <p className="mb-[0.7rem] text-[1.8rem] font-bold uppercase leading-[2.5rem] tracking-[0.13rem] lg:mb-[1.5rem]">
               $ {formatPrice(product.price)}
             </p>
-            <div>
+            <div className="flex gap-[1.6rem]">
+              <div className="flex h-[4.8rem] w-[12rem] items-center justify-center gap-[2rem] bg-light200">
+                <button
+                  type="button"
+                  className="text-small h-[1.8rem} w-[1.6rem] text-black/25"
+                  disabled={quantity === 1}
+                  onClick={() => handleQuantityClick(false)}
+                >
+                  -
+                </button>
+                <span className="h-[1.8rem} w-[1.6rem] text-center text-base font-bold">
+                  {quantity}
+                </span>
+                <button
+                  type="button"
+                  className="text-small h-[1.8rem} w-[1.6rem] text-black/25"
+                  onClick={() => handleQuantityClick(true)}
+                >
+                  +
+                </button>
+              </div>
               <button type="button" className="btn">
                 add to cart
               </button>
@@ -49,40 +77,42 @@ export default function Product() {
           </div>
         </section>
 
-        {/* FEATURES */}
-        <section className="mb-[8.8rem] grid gap-[2.4rem]">
-          <h3 className="h3">Features</h3>
-          {product.features.map((feature) => (
-            <p key={feature} className="text-black/50">
-              {feature}
-            </p>
-          ))}
-        </section>
+        <section className="mb-[8.8rem] flex flex-col gap-[8.8rem] md:mb-[12rem] md:gap-[12rem] lg:mb-[16rem] lg:w-full lg:flex-row lg:justify-between lg:gap-[5rem]">
+          {/* FEATURES */}
+          <div className="grid content-start gap-[2.4rem] md:gap-[3.2rem] lg:max-w-[63.5rem]">
+            <h3 className="h3">Features</h3>
+            {product.features.map((feature) => (
+              <p key={feature} className="text-black/50">
+                {feature}
+              </p>
+            ))}
+          </div>
 
-        {/* IN THE BOX */}
-        <section className="mb-[8.8rem] grid gap-[2.4rem]">
-          <h3 className="h3">In The Box</h3>
-          <ul className="grid gap-[0.8rem]">
-            {product.inTheBox.map((item) => {
-              const amount = item.substring(0, item.indexOf(' '));
-              const itemName = item.substring(
-                item.indexOf(' '),
-                item.length - 1
-              );
-              return (
-                <li key={item} className="flex gap-[2.1rem]">
-                  <span className="text-base font-bold text-orange">
-                    {amount}
-                  </span>
-                  <span className="text-base text-black/50">{itemName}</span>
-                </li>
-              );
-            })}
-          </ul>
+          {/* IN THE BOX */}
+          <div className="grid gap-[2.4rem] md:grid-flow-col md:grid-cols-2 md:gap-[1.2rem] lg:w-full lg:max-w-[35rem] lg:grid-flow-row lg:grid-cols-1 lg:content-start lg:gap-[3.2rem]">
+            <h3 className="h3">In The Box</h3>
+            <ul className="grid gap-[0.8rem]">
+              {product.inTheBox.map((item) => {
+                const amount = item.substring(0, item.indexOf(' '));
+                const itemName = item.substring(
+                  item.indexOf(' '),
+                  item.length - 1
+                );
+                return (
+                  <li key={item} className="flex gap-[2.1rem] md:gap-[2.4rem]">
+                    <span className="w-[1.8rem] flex-shrink-0 text-base font-bold text-orange">
+                      {amount}
+                    </span>
+                    <span className="text-base text-black/50">{itemName}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </section>
 
         {/* GALLERY */}
-        <div className="mb-[12rem] grid gap-[2rem]">
+        <div className="mb-[12rem] grid gap-[2rem] md:grid-flow-col md:grid-cols-[auto_0.6fr] md:grid-rows-2 md:gap-[1.8rem] lg:mb-[16rem]">
           {Object.entries(product.images.gallery).map(
             ([imageName, gallery], index) => (
               <BgPicture
@@ -90,25 +120,29 @@ export default function Product() {
                 alt={imageName}
                 images={gallery}
                 wrapperStyle={`${
-                  index === 2 ? 'h-[36.8rem]' : 'h-[17.4rem]'
+                  index === 2
+                    ? 'h-[36.8rem] md:row-span-2 md:h-full'
+                    : 'h-[17.4rem] lg:h-[28rem]'
                 } bg-light200 rounded`}
-                imageStyle="w-full"
+                imageStyle="w-full h-full"
               />
             )
           )}
         </div>
 
         {/* YOU MAY ALSO LIKE */}
-        <section className="mb-[8rem]">
-          <h3 className="h3 mb-[4rem] text-center">You may also like</h3>
-          <div className="flex flex-col gap-[5.6rem]">
+        <section className="mb-[8rem] md:mb-[2.2rem] lg:mb-[4rem]">
+          <h3 className="h3 mb-[4rem] text-center md:mb-[5.6rem] lg:mb-[6.4rem]">
+            You may also like
+          </h3>
+          <div className="flex flex-col gap-[5.6rem] md:flex-row md:gap-[1.1rem] lg:gap-[3rem]">
             {related.map((rProduct) => (
-              <div key={rProduct.slug}>
+              <div key={rProduct.slug} className="w-full">
                 <BgPicture
                   alt={rProduct.shortName}
                   images={rProduct.images.product}
-                  wrapperStyle="mb-[3.2rem] h-[12rem] rounded bg-light200"
-                  imageStyle="h-full"
+                  wrapperStyle="mb-[3.2rem] h-[12rem] rounded bg-light200 md:h-[31.8rem] md:mb-[4rem]"
+                  imageStyle="h-full md:w-full"
                 />
                 <div className="grid justify-items-center">
                   <h5 className="h5 mb-[3.2rem] text-center">
@@ -126,7 +160,7 @@ export default function Product() {
           </div>
         </section>
       </div>
-      <Categories className="md:mb-[2.2rem] lg:mb-[4rem]" />
+      <Categories className="md:mb-[2.2rem] lg:mb-0" />
     </>
   );
 }

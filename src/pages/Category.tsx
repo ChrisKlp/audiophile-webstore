@@ -55,7 +55,7 @@ export default function Category() {
           ))}
         </div>
       </div>
-      <Categories className="md:mb-[2.2rem] lg:mb-[4rem]" />
+      <Categories className="md:mb-[2.2rem] lg:mb-0" />
     </>
   );
 }

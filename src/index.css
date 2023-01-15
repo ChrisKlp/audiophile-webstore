@@ -16,15 +16,23 @@
 
 @layer components {
   .c-container {
+    padding: 0 2.4rem;
     margin: 0 auto;
     min-width: 28rem;
     max-width: 110rem;
-    padding: 0 2.4rem;
+    width: 100%;
   }
 
   @screen md {
     .c-container {
       padding: 0 4rem;
+    }
+  }
+
+  @screen lg {
+    .c-container {
+      padding: 0;
+      width: 92.7%;
     }
   }
 
@@ -65,7 +73,7 @@
   }
 
   .text-overline {
-    @apply text-[1.4rem] font-normal uppercase leading-[1.9rem] tracking-[1rem];
+    @apply text-[1.4rem] font-normal uppercase leading-[1.9rem] tracking-[1rem] md:text-[1.2rem] md:leading-[1.6rem] md:tracking-[0.85rem] lg:text-[1.4rem] lg:leading-[1.9rem] lg:tracking-[1rem];
   }
 
   .text-small {
