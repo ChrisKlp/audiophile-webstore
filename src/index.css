@@ -45,7 +45,7 @@
   }
 
   .h2 {
-    @apply text-[2.8rem] font-bold uppercase leading-[3.8rem] tracking-[0.1rem] md:text-[2.8rem] md:leading-[3.2rem] md:tracking-[0.1rem] lg:text-[4rem] lg:leading-[4.4rem] lg:tracking-[0.14rem];
+    @apply text-[2.8rem] font-bold uppercase leading-[3.8rem] tracking-[0.1rem] md:text-[4rem] md:leading-[4.4rem] md:tracking-[0.14rem];
   }
 
   .h3 {
@@ -57,7 +57,7 @@
   }
 
   .h5 {
-    @apply text-[2.4rem] font-bold uppercase leading-[3.3rem] tracking-[0.17rem] md:text-[2.4rem] md:leading-[3.3rem] md:tracking-[0.17rem];
+    @apply text-[2.4rem] font-bold uppercase leading-[3.3rem] tracking-[0.17rem] ;
   }
 
   .h6 {

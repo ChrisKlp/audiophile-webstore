@@ -1,7 +1,23 @@
+import mobile from '@/assets/shared/mobile/image-best-gear.jpg';
+import tablet from '@/assets/shared/tablet/image-best-gear.jpg';
+import desktop from '@/assets/shared/desktop/image-best-gear.jpg';
+import BgPicture from '@/components/BgPicture';
+import { TProductImageSizes } from '@/models';
+
 export default function About() {
+  const images: TProductImageSizes = {
+    mobile,
+    tablet,
+    desktop,
+  };
   return (
     <section className="c-container mb-[12rem] grid justify-items-center md:mb-[9.6rem] lg:mb-[20rem] lg:h-[58.8rem] lg:grid-flow-col lg:grid-cols-2 lg:items-center lg:justify-items-start lg:gap-[2rem]">
-      <div className="mb-[4rem] h-[30rem] w-full rounded bg-[url('@/assets/shared/mobile/image-best-gear.jpg')] bg-cover bg-center bg-no-repeat md:mb-[6.3rem] md:bg-[url('@/assets/shared/tablet/image-best-gear.jpg')] lg:order-last lg:mb-0 lg:h-full lg:bg-[url('@/assets/shared/desktop/image-best-gear.jpg')]" />
+      <BgPicture
+        alt="about - best gear"
+        images={images}
+        wrapperStyle="mb-[4rem] h-[30rem] rounded w-full md:mb-[6.3rem] lg:order-last lg:mb-0 lg:h-full"
+        imageStyle=""
+      />
       <div className="max-w-[57.3rem] lg:max-w-[44.5rem]">
         <h2 className="h2 mb-[3.2rem] text-center lg:text-left">
           Bringing you the <span className="text-orange">best</span> audio gear

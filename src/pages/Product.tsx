@@ -34,7 +34,9 @@ export default function Product() {
                 {product.featured}
               </span>
             )}
-            <h2 className="h2">{product.name}</h2>
+            <h2 className="h2 md:text-[2.8rem] md:leading-[3.2rem] md:tracking-[0.1rem]">
+              {product.name}
+            </h2>
             <p className="text-base text-black/50">{product.description}</p>
             <p className="mb-[0.7rem] text-[1.8rem] font-bold uppercase leading-[2.5rem] tracking-[0.13rem]">
               $ {formatPrice(product.price)}
@@ -97,7 +99,7 @@ export default function Product() {
         </div>
 
         {/* YOU MAY ALSO LIKE */}
-        <section className="mb-[12rem]">
+        <section className="mb-[8rem]">
           <h3 className="h3 mb-[4rem] text-center">You may also like</h3>
           <div className="flex flex-col gap-[5.6rem]">
             {related.map((rProduct) => (
@@ -109,9 +111,9 @@ export default function Product() {
                   imageStyle="h-full"
                 />
                 <div className="grid justify-items-center">
-                  <h3 className="h3 mb-[3.2rem] text-center">
+                  <h5 className="h5 mb-[3.2rem] text-center">
                     {rProduct.shortName}
-                  </h3>
+                  </h5>
                   <Link
                     to={`${routes.product}/${rProduct.slug}`}
                     className="btn"
@@ -124,7 +126,7 @@ export default function Product() {
           </div>
         </section>
       </div>
-      <Categories />
+      <Categories className="md:mb-[2.2rem] lg:mb-[4rem]" />
     </>
   );
 }

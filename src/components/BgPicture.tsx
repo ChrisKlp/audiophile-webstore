@@ -16,7 +16,7 @@ export default function BgPicture({
   imageStyle,
 }: Props) {
   return (
-    <div className={twMerge('relative overflow-hidden', wrapperStyle)}>
+    <div className={twMerge('group relative overflow-hidden', wrapperStyle)}>
       <picture>
         <source srcSet={getUrl(images.desktop)} media="(min-width: 1024px)" />
         <source srcSet={getUrl(images.tablet)} media="(min-width: 768px)" />
@@ -24,7 +24,7 @@ export default function BgPicture({
           src={getUrl(images.mobile)}
           alt={alt}
           className={twMerge(
-            'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover',
+            'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover duration-300 ease-in-out group-hover:scale-[105%]',
             imageStyle
           )}
         />
