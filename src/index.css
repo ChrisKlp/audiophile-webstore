@@ -11,6 +11,7 @@
 
   body {
     font-size: 1.6rem;
+    background-color: theme('colors.light100');
   }
 }
 
@@ -56,6 +57,10 @@
     @apply text-[2.8rem] font-bold uppercase leading-[3.8rem] tracking-[0.1rem] md:text-[4rem] md:leading-[4.4rem] md:tracking-[0.14rem];
   }
 
+  .h2-alt {
+    @apply h2 md:text-[2.8rem] md:leading-[3.2rem] md:tracking-[0.1rem] lg:text-[4rem] lg:leading-[4.4rem] lg:tracking-[0.14rem];
+  }
+
   .h3 {
     @apply text-[2.4rem] font-bold uppercase leading-[3.6rem] tracking-[0.08rem] md:text-[3.2rem] md:leading-[3.6rem] md:tracking-[0.17rem];
   }
@@ -78,5 +83,21 @@
 
   .text-small {
     @apply text-[1.3rem] font-bold uppercase leading-[1.8rem] tracking-[0.1rem];
+  }
+
+  .text-small-alt {
+    @apply text-[1.3rem] font-bold uppercase leading-[2.5rem] tracking-[0.1rem] text-orange;
+  }
+
+  .input {
+    @apply rounded border border-gray100 py-[1.8rem] px-[2.4rem] text-[1.4rem] font-bold leading-[1.9rem] tracking-[-0.025rem] text-black outline-1 outline-offset-1 outline-orange duration-200 ease-in-out placeholder:text-black placeholder:opacity-40 group-hover:border-orange;
+  }
+
+  .input-label {
+    @apply text-[1.2rem] font-bold leading-[1.6rem] tracking-[-0.02rem] text-black;
+  }
+
+  .input-error {
+    @apply input-label text-red font-normal;
   }
 }

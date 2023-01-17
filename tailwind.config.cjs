@@ -19,12 +19,14 @@ module.exports = {
         white: '#ffffff',
         black: '#000000',
         gray: '#4C4C4C',
+        gray100: '#CFCFCF',
         light100: '#FAFAFA',
         light200: '#F1F1F1',
         dark100: '#101010',
         metal: '#565584',
         orange: '#D87D4A',
         lightOrange: '#fbaf85',
+        red: '#CD2C2C',
       },
       keyframes: {
         fadeIn: {

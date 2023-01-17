@@ -1,14 +1,14 @@
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import BgPicture from '@/components/BgPicture';
 import Categories from '@/components/Categories';
+import GoBackButton from '@/components/GoBackButton';
 import { TProductLoaderData } from '@/models';
 import { routes } from '@/navigation';
 import { formatPrice } from '@/utils/utils';
 
 export default function Product() {
   const { product, related } = useLoaderData() as TProductLoaderData;
-  const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
 
   function handleQuantityClick(isIncrease = true) {
@@ -20,13 +20,7 @@ export default function Product() {
   return (
     <>
       <div className="c-container">
-        <button
-          type="button"
-          className="mb-[2.4rem] pt-[1.6rem] text-base opacity-50 duration-200 ease-in-out hover:text-orange hover:opacity-100 md:pt-[3.3rem]"
-          onClick={() => navigate(-1)}
-        >
-          Go Back
-        </button>
+        <GoBackButton />
 
         {/* PRODUCT HEADER */}
         <section className="mb-[8.8rem] md:mb-[12rem] md:grid md:grid-flow-col md:grid-cols-[1fr_auto] md:gap-[6.9rem] lg:mb-[16rem] lg:grid-cols-2 lg:gap-[3rem]">
@@ -42,9 +36,7 @@ export default function Product() {
                 {product.featured}
               </span>
             )}
-            <h2 className="h2 md:text-[2.8rem] md:leading-[3.2rem] md:tracking-[0.1rem] lg:text-[4rem] lg:leading-[4.4rem] lg:tracking-[0.14rem]">
-              {product.name}
-            </h2>
+            <h2 className="h2-alt">{product.name}</h2>
             <p className="text-base text-black/50">{product.description}</p>
             <p className="mb-[0.7rem] text-[1.8rem] font-bold uppercase leading-[2.5rem] tracking-[0.13rem] lg:mb-[1.5rem]">
               $ {formatPrice(product.price)}
