@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-throw-literal */
 import { LoaderFunctionArgs } from 'react-router-dom';
 import { getCategory, getProduct } from '@/utils/data-utils';
-import { TProductFullData } from '@/models';
+import { TLayoutConfig, TProductFullData } from '@/models';
 
 export async function productLoader({ params }: LoaderFunctionArgs) {
   try {
@@ -33,4 +33,8 @@ export async function categoryLoader({ params }: LoaderFunctionArgs) {
       statusText: error as string,
     });
   }
+}
+
+export function layoutLoader(config: TLayoutConfig) {
+  return { layoutConfig: { ...config } };
 }

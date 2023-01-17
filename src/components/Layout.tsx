@@ -6,15 +6,17 @@ import { TLayoutConfig } from '@/models';
 
 export default function Layout() {
   const matches = useMatches();
-  const data = matches.find((match) => Boolean(match.data))
-    ?.data as TLayoutConfig;
+  const { layoutConfig } = matches.find((match) => Boolean(match.data))
+    ?.data as {
+    layoutConfig?: TLayoutConfig;
+  };
 
   return (
     <>
-      <Navigation transparent={data?.transparentNav} />
+      <Navigation transparent={layoutConfig?.transparentNav} />
       <main>
         <Outlet />
-        {!data?.clean && <About />}
+        {!layoutConfig?.removeAbout && <About />}
       </main>
       <Footer />
       <ScrollRestoration />

@@ -15,7 +15,12 @@ import Home from '@/pages/Home';
 import Page404 from '@/pages/Page404';
 import Product from '@/pages/Product';
 import './index.css';
-import { categoryLoader, productLoader } from './utils/route-loaders';
+import Checkout from './pages/Checkout';
+import {
+  categoryLoader,
+  layoutLoader,
+  productLoader,
+} from '@/features/routeLoaders';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +28,7 @@ const router = createBrowserRouter(
       <Route
         index
         element={<Home />}
-        loader={() => ({ transparentNav: true })}
+        loader={() => layoutLoader({ transparentNav: true })}
       />
       <Route path={`${routes.product}`}>
         <Route index element={<Navigate to={routes.home} />} />
@@ -37,6 +42,11 @@ const router = createBrowserRouter(
           loader={categoryLoader}
         />
       </Route>
+      <Route
+        path={`${routes.checkout}`}
+        element={<Checkout />}
+        loader={() => layoutLoader({ removeAbout: true })}
+      />
     </Route>
   )
 );

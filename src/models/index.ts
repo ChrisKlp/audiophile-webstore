@@ -24,7 +24,7 @@ export type TProductData = {
 
 export type TLayoutConfig = {
   transparentNav?: boolean;
-  clean?: boolean;
+  removeAbout?: boolean;
 };
 
 export type TProductImageSizes = {
