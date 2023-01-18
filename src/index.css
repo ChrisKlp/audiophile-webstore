@@ -89,8 +89,12 @@
     @apply text-[1.3rem] font-bold uppercase leading-[2.5rem] tracking-[0.1rem] text-orange;
   }
 
+  .input-text {
+    @apply text-[1.4rem] font-bold leading-[1.9rem] tracking-[-0.025rem] text-black;
+  }
+
   .input {
-    @apply rounded border border-gray100 py-[1.8rem] px-[2.4rem] text-[1.4rem] font-bold leading-[1.9rem] tracking-[-0.025rem] text-black outline-1 outline-offset-1 outline-orange duration-200 ease-in-out placeholder:text-black placeholder:opacity-40 group-hover:border-orange;
+    @apply input-text rounded border border-gray100 py-[1.8rem] px-[2.4rem] outline-1 outline-offset-1 outline-orange duration-200 ease-in-out placeholder:text-black placeholder:opacity-40;
   }
 
   .input-label {

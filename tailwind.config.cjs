@@ -2,9 +2,6 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    borderRadius: {
-      DEFAULT: '0.8rem',
-    },
     fontSize: {
       base: [
         '1.5rem',
@@ -15,6 +12,9 @@ module.exports = {
       ],
     },
     extend: {
+      borderRadius: {
+        DEFAULT: '0.8rem',
+      },
       colors: {
         white: '#ffffff',
         black: '#000000',
