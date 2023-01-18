@@ -2,6 +2,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import * as z from 'zod';
+import { useEffect } from 'react';
 import GoBackButton from '@/components/GoBackButton';
 import RadioInput from '@/components/RadioInput';
 import TextInput from '@/components/TextInput';
@@ -11,7 +12,7 @@ const paymentMethods = {
   cash: 'Cash on delivery',
 };
 
-const schema = z.object({
+const Schema = z.object({
   name: z.string().min(3),
   email: z.string().email(),
   phone: z.string().min(6),
@@ -24,9 +25,11 @@ const schema = z.object({
   eMoneyPin: z.string().min(4).optional(),
 });
 
+type TCheckoutForm = z.infer<typeof Schema>;
+
 export default function Checkout() {
-  const methods = useForm({
-    resolver: zodResolver(schema),
+  const methods = useForm<TCheckoutForm>({
+    resolver: zodResolver(Schema),
     defaultValues: {
       paymentMethod: paymentMethods.eMoney,
     },
@@ -34,13 +37,20 @@ export default function Checkout() {
   const onSubmit = (data: unknown) => console.log(data);
   const paymentMethod = methods.watch('paymentMethod');
 
+  useEffect(() => {
+    if (paymentMethod === paymentMethods.cash) {
+      methods.resetField('eMoneyNumber');
+      methods.resetField('eMoneyPin');
+    }
+  }, [methods, paymentMethod]);
+
   return (
     <div className="c-container">
       <GoBackButton />
       <section>
         <h2 className="h2-alt mb-[3.2rem] text-black">Checkout</h2>
         <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <form id="checkout-form" onSubmit={methods.handleSubmit(onSubmit)}>
             <div className="mb-[3.2rem] grid gap-[2.4rem]">
               <p className="text-small-alt mb-[-0.8rem]">Billing details</p>
               <TextInput label="Name" id="name" placeholder="Alexei Ward" />
@@ -98,11 +108,11 @@ export default function Checkout() {
                 />
               </div>
             )}
-            <button type="submit" className="btn w-full">
-              CONTINUE & PAY
-            </button>
           </form>
         </FormProvider>
+        <button type="submit" form="checkout-form" className="btn w-full">
+          CONTINUE & PAY
+        </button>
       </section>
     </div>
   );
