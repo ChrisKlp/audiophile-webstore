@@ -7,6 +7,7 @@ import iconCart from '@/assets/shared/desktop/icon-cart.svg';
 import { navigation } from '@/navigation';
 import Categories from '@/components/Categories';
 import useOnClickOutside from '@/hooks/useOnClickOutside';
+import Cart from './Cart';
 
 type Props = {
   transparent?: boolean;
@@ -14,10 +15,15 @@ type Props = {
 
 export default function Navigation({ transparent = false }: Props) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const ref = useRef(null);
 
   const onToggle = () => setIsOpen(!isOpen);
-  const onClose = () => setIsOpen(false);
+  const onCartToggle = () => setIsCartOpen(!isCartOpen);
+  const onClose = () => {
+    setIsOpen(false);
+    setIsCartOpen(false);
+  };
 
   useOnClickOutside(ref, onClose);
 
@@ -46,7 +52,7 @@ export default function Navigation({ transparent = false }: Props) {
               alt="audiophile logo"
             />
           </Link>
-          <button type="button">
+          <button type="button" onClick={onCartToggle}>
             <img className="" src={iconCart} alt="icon cart" />
           </button>
         </div>
@@ -80,6 +86,7 @@ export default function Navigation({ transparent = false }: Props) {
           />
         </div>
       )}
+      {!!isCartOpen && <Cart onClose={onClose} className="animate-fadeIn" />}
     </header>
   );
 }
