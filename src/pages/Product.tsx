@@ -6,9 +6,11 @@ import GoBackButton from '@/components/GoBackButton';
 import { TProductLoaderData } from '@/models';
 import { routes } from '@/navigation';
 import { formatPrice } from '@/utils/utils';
+import useCart from '@/features/cartStore';
 
 export default function Product() {
   const { product, related } = useLoaderData() as TProductLoaderData;
+  const addToCart = useCart((state) => state.addItem);
   const [quantity, setQuantity] = useState(1);
 
   function handleQuantityClick(isIncrease = true) {
@@ -62,7 +64,11 @@ export default function Product() {
                   +
                 </button>
               </div>
-              <button type="button" className="btn">
+              <button
+                type="button"
+                className="btn"
+                onClick={() => addToCart(product, quantity)}
+              >
                 add to cart
               </button>
             </div>

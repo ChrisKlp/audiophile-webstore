@@ -35,6 +35,17 @@ export async function categoryLoader({ params }: LoaderFunctionArgs) {
   }
 }
 
+export async function cartProductLoader(slug: string) {
+  try {
+    return await getProduct(slug);
+  } catch (error) {
+    throw new Response('', {
+      status: 404,
+      statusText: error as string,
+    });
+  }
+}
+
 export function layoutLoader(config: TLayoutConfig) {
   return { layoutConfig: { ...config } };
 }

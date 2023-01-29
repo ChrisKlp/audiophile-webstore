@@ -13,6 +13,7 @@ export type TProductData = {
   featured: string;
   name: string;
   shortName: string;
+  cartName: string;
   slug: string;
   category: string;
   description: string;
