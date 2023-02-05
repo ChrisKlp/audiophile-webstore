@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
+import { ForwardedRef, forwardRef } from 'react';
 import useCart from '@/features/cartStore';
 import useProducts from '@/hooks/useProducts';
 import { routes } from '@/navigation';
@@ -11,29 +12,40 @@ type Props = {
   onClose: () => void;
 };
 
-export default function Cart({ className, onClose }: Props) {
+function Cart(
+  { className, onClose }: Props,
+  ref: ForwardedRef<HTMLDivElement>
+) {
   const { cart, removeAll, decreaseQuantity, increaseQuantity } = useCart();
   const { getTotal, getProduct } = useProducts();
 
   return (
-    <>
+    <div className="absolute w-full">
       <div
         className={twMerge('c-container grid justify-items-end', className)}
         aria-hidden="true"
       >
-        <div className="mt-[2.4rem] w-full max-w-[37.7rem] rounded bg-white px-[2.8rem] py-[3.2rem] md:px-[3.2rem]">
+        <div
+          ref={ref}
+          className="mt-[2.4rem] w-full max-w-[37.7rem] rounded bg-white px-[2.8rem] py-[3.2rem] md:px-[3.2rem]"
+        >
           <div className="mb-[3.2rem] flex items-center justify-between">
             <p className="text-cart text-[1.8rem] tracking-[0.12rem] text-black">
               Cart
             </p>
-            <button
-              type="button"
-              onClick={removeAll}
-              className="text-cart font-medium capitalize text-black/50 underline"
-            >
-              Remove all
-            </button>
+            {cart.length > 0 && (
+              <button
+                type="button"
+                onClick={removeAll}
+                className="text-cart font-medium capitalize text-black/50 underline"
+              >
+                Remove all
+              </button>
+            )}
           </div>
+          {cart.length === 0 && (
+            <p className="text-base">Your shopping cart is currently empty!</p>
+          )}
           <div className="mb-[3.2rem] grid gap-[2.4rem]">
             {cart.map(({ id, quantity }) => {
               const product = getProduct(id);
@@ -42,7 +54,7 @@ export default function Cart({ className, onClose }: Props) {
                   <div key={id} className="flex items-center">
                     <div className="relative mr-[1.6rem] h-[6.4rem] w-[6.4rem] flex-shrink-0 overflow-hidden rounded bg-light200">
                       <img
-                        src={product.images.product.mobile}
+                        src={product.images.cart}
                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
                         alt="asad"
                       />
@@ -78,13 +90,21 @@ export default function Cart({ className, onClose }: Props) {
               return null;
             })}
           </div>
-          <div className="mb-[2.4rem] flex items-center justify-between">
-            <span className="text-cart font-medium text-black/50">Total</span>
-            <p className="text-cart text-[1.8rem] font-bold leading-[2.5rem] text-black">
-              $ {formatPrice(getTotal())}
-            </p>
-          </div>
-          <Link to={routes.checkout} className="btn w-full" onClick={onClose}>
+          {cart.length > 0 && (
+            <div className="mb-[2.4rem] flex items-center justify-between">
+              <span className="text-cart font-medium text-black/50">Total</span>
+              <p className="text-cart text-[1.8rem] font-bold leading-[2.5rem] text-black">
+                $ {formatPrice(getTotal())}
+              </p>
+            </div>
+          )}
+          <Link
+            to={routes.checkout}
+            className={`${
+              cart.length === 0 && 'pointer-events-none bg-gray/50'
+            } btn w-full`}
+            onClick={onClose}
+          >
             Checkout
           </Link>
         </div>
@@ -94,6 +114,8 @@ export default function Cart({ className, onClose }: Props) {
         aria-hidden="true"
         onClick={onClose}
       />
-    </>
+    </div>
   );
 }
+
+export default forwardRef<HTMLDivElement, Props>(Cart);

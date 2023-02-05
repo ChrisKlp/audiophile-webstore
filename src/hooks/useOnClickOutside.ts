@@ -1,15 +1,22 @@
 import { useEffect } from 'react';
 
 export default function useOnClickOutside(
-  ref: React.RefObject<HTMLElement | undefined>,
+  refs: Array<React.RefObject<HTMLElement | undefined>>,
   handler: () => void
 ) {
   useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent) => {
-      if (!ref.current || ref.current.contains(event.target as HTMLElement)) {
-        return;
+      let isElementClicked = false;
+
+      refs.forEach((ref) => {
+        if (!ref.current || ref.current.contains(event.target as HTMLElement)) {
+          isElementClicked = true;
+        }
+      });
+
+      if (!isElementClicked) {
+        handler();
       }
-      handler();
     };
     document.addEventListener('mousedown', listener);
     document.addEventListener('touchstart', listener);
@@ -17,5 +24,5 @@ export default function useOnClickOutside(
       document.removeEventListener('mousedown', listener);
       document.removeEventListener('touchstart', listener);
     };
-  }, [ref, handler]);
+  }, [refs, handler]);
 }

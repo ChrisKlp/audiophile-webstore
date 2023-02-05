@@ -8,15 +8,20 @@ import { navigation } from '@/navigation';
 import Categories from '@/components/Categories';
 import useOnClickOutside from '@/hooks/useOnClickOutside';
 import Cart from './Cart';
+import useCart from '@/features/cartStore';
 
 type Props = {
   transparent?: boolean;
 };
 
 export default function Navigation({ transparent = false }: Props) {
+  const cart = useCart((state) => state.cart);
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const ref = useRef(null);
+  const navRef = useRef(null);
+  const cartRef = useRef(null);
+  const navButtonRef = useRef(null);
+  const cartButtonRef = useRef(null);
 
   const onToggle = () => setIsOpen(!isOpen);
   const onCartToggle = () => setIsCartOpen(!isCartOpen);
@@ -25,11 +30,11 @@ export default function Navigation({ transparent = false }: Props) {
     setIsCartOpen(false);
   };
 
-  useOnClickOutside(ref, onClose);
+  useOnClickOutside([navRef, navButtonRef], onClose);
+  useOnClickOutside([cartRef, cartButtonRef], onClose);
 
   return (
     <header
-      ref={ref}
       className={twMerge(
         `relative z-10 h-[9rem] lg:h-auto ${
           transparent
@@ -42,18 +47,35 @@ export default function Navigation({ transparent = false }: Props) {
     >
       <div className="c-container">
         <div className="flex items-center justify-between py-[3.2rem] md:justify-start lg:pt-[3.2rem] lg:pb-[3.6rem]">
-          <button type="button" className="lg:hidden" onClick={onToggle}>
-            <img className="" src={iconHamburger} alt="icon hamburger" />
+          <button
+            ref={navButtonRef}
+            type="button"
+            className="lg:hidden"
+            onClick={onToggle}
+          >
+            <img src={iconHamburger} alt="icon hamburger" />
           </button>
-          <Link to="/" className="md:ml-[4.2rem] md:grow lg:ml-0">
-            <img
-              className="h-auto w-[14.3rem] flex-shrink-0"
-              src={logo}
-              alt="audiophile logo"
-            />
-          </Link>
-          <button type="button" onClick={onCartToggle}>
-            <img className="" src={iconCart} alt="icon cart" />
+          <div className="flex md:ml-[4.2rem] md:grow lg:ml-0">
+            <Link to="/">
+              <img
+                className="h-auto w-[14.3rem] flex-shrink-0"
+                src={logo}
+                alt="audiophile logo"
+              />
+            </Link>
+          </div>
+          <button
+            ref={cartButtonRef}
+            type="button"
+            onClick={onCartToggle}
+            className="relative"
+          >
+            <img src={iconCart} alt="icon cart" />
+            {cart.length > 0 && (
+              <span className="text-small absolute right-[-0.8rem] top-[-0.8rem] grid h-[1.5rem] w-[1.5rem] place-content-center rounded-full bg-orange text-[1rem] text-white">
+                {cart.length}
+              </span>
+            )}
           </button>
         </div>
         <nav className="absolute top-1/2 left-1/2 hidden -translate-y-1/2 -translate-x-1/2 items-center justify-center gap-[3.4rem] pb-[0.4rem] lg:flex">
@@ -73,7 +95,10 @@ export default function Navigation({ transparent = false }: Props) {
       </div>
       {!!isOpen && (
         <div className="lg:hidden">
-          <nav className="animate-fadeIn rounded-b-[0.8rem] bg-white">
+          <nav
+            ref={navRef}
+            className="animate-fadeIn rounded-b-[0.8rem] bg-white"
+          >
             <Categories
               className="pb-[3.5rem] pt-[3.2rem] md:pb-[6.7rem] md:pt-[5.6rem]"
               onClick={onClose}
@@ -86,7 +111,9 @@ export default function Navigation({ transparent = false }: Props) {
           />
         </div>
       )}
-      {!!isCartOpen && <Cart onClose={onClose} className="animate-fadeIn" />}
+      {!!isCartOpen && (
+        <Cart ref={cartRef} onClose={onClose} className="animate-fadeIn" />
+      )}
     </header>
   );
 }

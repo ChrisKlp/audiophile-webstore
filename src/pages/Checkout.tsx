@@ -3,10 +3,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GoBackButton from '@/components/GoBackButton';
 import RadioInput from '@/components/RadioInput';
 import TextInput from '@/components/TextInput';
 import Summary from '@/components/Summary';
+import useCart from '@/features/cartStore';
 
 const paymentMethods = {
   eMoney: 'e-Money',
@@ -29,6 +31,8 @@ const Schema = z.object({
 type TCheckoutForm = z.infer<typeof Schema>;
 
 export default function Checkout() {
+  const cart = useCart((state) => state.cart);
+  const navigate = useNavigate();
   const methods = useForm<TCheckoutForm>({
     resolver: zodResolver(Schema),
     defaultValues: {
@@ -39,11 +43,14 @@ export default function Checkout() {
   const paymentMethod = methods.watch('paymentMethod');
 
   useEffect(() => {
+    if (cart.length === 0) {
+      navigate('/');
+    }
     if (paymentMethod === paymentMethods.cash) {
       methods.resetField('eMoneyNumber');
       methods.resetField('eMoneyPin');
     }
-  }, [methods, paymentMethod]);
+  }, [cart.length, methods, navigate, paymentMethod]);
 
   return (
     <div className="c-container">
