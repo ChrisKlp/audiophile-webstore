@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import GoBackButton from '@/components/GoBackButton';
 import RadioInput from '@/components/RadioInput';
 import TextInput from '@/components/TextInput';
+import Summary from '@/components/Summary';
 
 const paymentMethods = {
   eMoney: 'e-Money',
@@ -110,7 +111,12 @@ export default function Checkout() {
             )}
           </form>
         </FormProvider>
-        <button type="submit" form="checkout-form" className="btn w-full">
+        <Summary />
+        <button
+          type="submit"
+          form="checkout-form"
+          className="btn mb-[12.9rem] w-full"
+        >
           CONTINUE & PAY
         </button>
       </section>

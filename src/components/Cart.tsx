@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 import useCart from '@/features/cartStore';
+import useProducts from '@/hooks/useProducts';
 import { routes } from '@/navigation';
 import { formatPrice } from '@/utils/utils';
 
@@ -12,13 +13,7 @@ type Props = {
 
 export default function Cart({ className, onClose }: Props) {
   const { cart, removeAll, decreaseQuantity, increaseQuantity } = useCart();
-
-  function getTotal() {
-    return cart.reduce(
-      (total, item) => total + item.product.price * item.quantity,
-      0
-    );
-  }
+  const { getTotal, getProduct } = useProducts();
 
   return (
     <>
@@ -40,42 +35,48 @@ export default function Cart({ className, onClose }: Props) {
             </button>
           </div>
           <div className="mb-[3.2rem] grid gap-[2.4rem]">
-            {cart.map(({ id, product, quantity }) => (
-              <div key={id} className="flex items-center">
-                <div className="relative mr-[1.6rem] h-[6.4rem] w-[6.4rem] flex-shrink-0 overflow-hidden rounded bg-light200">
-                  <img
-                    src={product.images.product.mobile}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
-                    alt="asad"
-                  />
-                </div>
-                <div className="grid flex-grow">
-                  <span className="text-cart">{product.cartName}</span>
-                  <span className="text-cart text-black/50">
-                    $ {formatPrice(product.price)}
-                  </span>
-                </div>
-                <div className="flex h-[3.2rem] w-[9.6rem] items-center justify-center gap-[1.2rem] bg-light200">
-                  <button
-                    type="button"
-                    className="text-small h-[1.8rem} w-[1.6rem] text-black/25"
-                    onClick={() => decreaseQuantity(id)}
-                  >
-                    -
-                  </button>
-                  <span className="text-small h-[1.8rem} w-[1.6rem] text-center text-base font-bold">
-                    {quantity}
-                  </span>
-                  <button
-                    type="button"
-                    className="text-small h-[1.8rem} w-[1.6rem] text-black/25"
-                    onClick={() => increaseQuantity(id)}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            ))}
+            {cart.map(({ id, quantity }) => {
+              const product = getProduct(id);
+              if (product) {
+                return (
+                  <div key={id} className="flex items-center">
+                    <div className="relative mr-[1.6rem] h-[6.4rem] w-[6.4rem] flex-shrink-0 overflow-hidden rounded bg-light200">
+                      <img
+                        src={product.images.product.mobile}
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
+                        alt="asad"
+                      />
+                    </div>
+                    <div className="grid flex-grow">
+                      <span className="text-cart">{product.cartName}</span>
+                      <span className="text-cart text-black/50">
+                        $ {formatPrice(product.price)}
+                      </span>
+                    </div>
+                    <div className="flex h-[3.2rem] w-[9.6rem] items-center justify-center gap-[1.2rem] bg-light200">
+                      <button
+                        type="button"
+                        className="text-small h-[1.8rem} w-[1.6rem] text-black/25"
+                        onClick={() => decreaseQuantity(id)}
+                      >
+                        -
+                      </button>
+                      <span className="text-small h-[1.8rem} w-[1.6rem] text-center text-base font-bold">
+                        {quantity}
+                      </span>
+                      <button
+                        type="button"
+                        className="text-small h-[1.8rem} w-[1.6rem] text-black/25"
+                        onClick={() => increaseQuantity(id)}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                );
+              }
+              return null;
+            })}
           </div>
           <div className="mb-[2.4rem] flex items-center justify-between">
             <span className="text-cart font-medium text-black/50">Total</span>

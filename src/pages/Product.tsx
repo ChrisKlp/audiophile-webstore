@@ -67,7 +67,7 @@ export default function Product() {
               <button
                 type="button"
                 className="btn"
-                onClick={() => addToCart(product, quantity)}
+                onClick={() => addToCart(product.slug, quantity)}
               >
                 add to cart
               </button>
