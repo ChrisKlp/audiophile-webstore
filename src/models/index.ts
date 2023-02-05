@@ -1,16 +1,12 @@
 export type TProductLoaderData = {
-  product: TProductFullData;
-  related: TProductFullData[];
+  product: TProductData;
+  related: TProductData[];
 };
 
-export type TCategoryLoaderData = TProductFullData[];
-
-export type TProductFullData = TProductData & {
-  images: TProductImagesGroup;
-};
+export type TCategoryLoaderData = TProductData[];
 
 export type TProductData = {
-  featured: string;
+  new: boolean;
   name: string;
   shortName: string;
   cartName: string;
@@ -19,8 +15,17 @@ export type TProductData = {
   description: string;
   price: number;
   features: string[];
-  inTheBox: string[];
+  includes: {
+    quantity: number;
+    item: string;
+  }[];
   related: string[];
+  images: {
+    cart: string;
+    category: TProductImageSizes;
+    product: TProductImageSizes;
+    gallery: Record<string | number, TProductImageSizes>;
+  };
 };
 
 export type TLayoutConfig = {
@@ -32,10 +37,4 @@ export type TProductImageSizes = {
   mobile: string;
   tablet: string;
   desktop: string;
-};
-
-export type TProductImagesGroup = {
-  product: TProductImageSizes;
-  preview: TProductImageSizes;
-  gallery: Record<string | number, TProductImageSizes>;
 };

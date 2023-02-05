@@ -6,10 +6,9 @@ import { formatPrice } from '@/utils/utils';
 
 type Props = {
   className?: string;
-  variant?: 'cart' | 'summary';
 };
 
-export default function Summary({ className, variant = 'cart' }: Props) {
+export default function Summary({ className }: Props) {
   const cart = useCart((state) => state.cart);
   const { getTotal, getProduct } = useProducts();
 

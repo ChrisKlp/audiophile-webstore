@@ -25,7 +25,7 @@ export default function Category() {
             >
               <BgPicture
                 alt={product.name}
-                images={product.images.preview}
+                images={product.images.category}
                 wrapperStyle={`mb-[4rem] w-full h-[35.2rem] rounded bg-light200 md:mb-[5.2rem] lg:h-[56rem] lg:m-0 ${
                   index % 2 !== 0 && 'lg:order-1'
                 }`}
@@ -36,9 +36,9 @@ export default function Category() {
                   index % 2 === 0 && 'justify-self-end'
                 }`}
               >
-                {product.featured && (
+                {product.new && (
                   <span className="text-overline block text-orange">
-                    {product.featured}
+                    New Product
                   </span>
                 )}
                 <h2 className="h2 text-center md:mb-[1.6rem] lg:text-left">

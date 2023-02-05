@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
 import useCart from '@/features/cartStore';
-import { cartProductLoader } from '@/features/routeLoaders';
-import { TProductFullData } from '@/models';
+import { TProductData } from '@/models';
+import { getProduct as loadProduct } from '@/utils/data-utils';
 
 export default function useProducts() {
   const cart = useCart((state) => state.cart);
-  const [products, setProducts] = useState<TProductFullData[]>([]);
+  const [products, setProducts] = useState<TProductData[]>([]);
 
   const getProducts = useCallback(() => {
-    const users = [] as TProductFullData[];
+    const users = [] as TProductData[];
     cart.forEach(async (item) => {
-      const product = await cartProductLoader(item.id);
+      const product = await loadProduct(item.id);
       if (!(product instanceof Error)) {
         users.push(product);
       }

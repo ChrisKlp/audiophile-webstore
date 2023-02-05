@@ -33,9 +33,9 @@ export default function Product() {
             imageStyle="h-full md:w-full lg:object-contain"
           />
           <div className="grid gap-[2.4rem] md:w-[34rem] md:content-center lg:w-[44.5rem] lg:gap-[3.2rem] lg:justify-self-end">
-            {product.featured && (
+            {product.new && (
               <span className="text-overline block text-orange md:mb-[-1.6rem]">
-                {product.featured}
+                New product
               </span>
             )}
             <h2 className="h2-alt">{product.name}</h2>
@@ -90,21 +90,14 @@ export default function Product() {
           <div className="grid gap-[2.4rem] md:grid-flow-col md:grid-cols-2 md:gap-[1.2rem] lg:w-full lg:max-w-[35rem] lg:grid-flow-row lg:grid-cols-1 lg:content-start lg:gap-[3.2rem]">
             <h3 className="h3">In The Box</h3>
             <ul className="grid gap-[0.8rem]">
-              {product.inTheBox.map((item) => {
-                const amount = item.substring(0, item.indexOf(' '));
-                const itemName = item.substring(
-                  item.indexOf(' '),
-                  item.length - 1
-                );
-                return (
-                  <li key={item} className="flex gap-[2.1rem] md:gap-[2.4rem]">
-                    <span className="w-[1.8rem] flex-shrink-0 text-base font-bold text-orange">
-                      {amount}
-                    </span>
-                    <span className="text-base text-black/50">{itemName}</span>
-                  </li>
-                );
-              })}
+              {product.includes.map(({ item, quantity: itemQuantity }) => (
+                <li key={item} className="flex gap-[2.1rem] md:gap-[2.4rem]">
+                  <span className="w-[1.8rem] flex-shrink-0 text-base font-bold text-orange">
+                    {itemQuantity}x
+                  </span>
+                  <span className="text-base text-black/50">{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </section>
