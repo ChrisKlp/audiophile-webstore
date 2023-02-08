@@ -17,7 +17,7 @@ export default function Summary({ className }: Props) {
       className={twMerge('grid justify-items-end', className)}
       aria-hidden="true"
     >
-      <div className="mt-[2.4rem] w-full rounded md:px-[3.2rem]">
+      <div className="w-full">
         <div className="mb-[3.2rem] flex items-center justify-between">
           <p className="text-cart text-[1.8rem] tracking-[0.12rem] text-black">
             Summary

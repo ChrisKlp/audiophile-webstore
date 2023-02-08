@@ -51,7 +51,7 @@ export default function ProductsShowcase() {
         </div>
       </div>
 
-      <div className="grid gap-[2.4rem] md:h-[32rem] md:grid-flow-col md:grid-cols-2 md:items-center md:gap-[1.1rem]">
+      <div className="grid gap-[2.4rem] md:h-[32rem] md:grid-flow-col md:grid-cols-2 md:items-center md:gap-[1.1rem] lg:gap-[3.2rem]">
         <BgPicture
           alt="YX1 EARPHONES"
           images={yx1Images}

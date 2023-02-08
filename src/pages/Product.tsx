@@ -22,7 +22,7 @@ export default function Product() {
   return (
     <>
       <div className="c-container">
-        <GoBackButton />
+        <GoBackButton className="mb-[2.4rem]" />
 
         {/* PRODUCT HEADER */}
         <section className="mb-[8.8rem] md:mb-[12rem] md:grid md:grid-flow-col md:grid-cols-[1fr_auto] md:gap-[6.9rem] lg:mb-[16rem] lg:grid-cols-2 lg:gap-[3rem]">
