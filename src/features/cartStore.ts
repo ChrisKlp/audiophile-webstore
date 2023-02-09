@@ -22,24 +22,7 @@ type TCartStore = {
 const useCart = create<TCartStore>()(
   devtools(
     immer((set, get) => ({
-      cart: [
-        {
-          id: 'xx59-headphones',
-          quantity: 1,
-        },
-        {
-          id: 'xx59-headphones',
-          quantity: 1,
-        },
-        {
-          id: 'xx59-headphones',
-          quantity: 1,
-        },
-        {
-          id: 'xx59-headphones',
-          quantity: 1,
-        },
-      ] as TCart,
+      cart: [] as TCart,
 
       increaseQuantity: (id: string) => {
         const productIndex = get().cart.findIndex((item) => item.id === id);
