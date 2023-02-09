@@ -18,13 +18,13 @@ const yx1Images = {
 export default function ProductsShowcase() {
   return (
     <section className="c-container mb-[12rem] grid gap-[3.2rem] md:mb-[9.6rem] lg:mb-[20rem] lg:gap-[4.8rem]">
-      <div className="grid justify-items-center gap-[3.2rem] rounded bg-orange bg-[url('@/assets/home/desktop/pattern-circles.svg')] bg-[length:55.8rem] bg-[center_top_-12rem] bg-no-repeat px-[2.4rem] py-[5.5rem] md:gap-[6.4rem] md:bg-auto md:bg-[center_top_-28.8rem] md:pt-[5.2rem] md:pb-[6.4rem] lg:h-[56rem] lg:grid-flow-col lg:grid-cols-2 lg:items-end lg:gap-0 lg:overflow-hidden lg:bg-[left_-14.8rem_top_-3.6rem] lg:p-0">
+      <div className="group grid justify-items-center gap-[3.2rem] rounded bg-orange bg-[url('@/assets/home/desktop/pattern-circles.svg')] bg-[length:55.8rem] bg-[center_top_-12rem] bg-no-repeat px-[2.4rem] py-[5.5rem] md:gap-[6.4rem] md:bg-auto md:bg-[center_top_-28.8rem] md:pt-[5.2rem] md:pb-[6.4rem] lg:h-[56rem] lg:grid-flow-col lg:grid-cols-2 lg:items-end lg:gap-0 lg:overflow-hidden lg:bg-[left_-14.8rem_top_-3.6rem] lg:p-0">
         <picture className="lg:mr-[2.7rem] lg:justify-self-end">
           <source srcSet={image_zx9_xl} media="(min-width: 1024px)" />
           <source srcSet={image_zx9_md} media="(min-width: 768px)" />
           <img
             src={image_zx9}
-            className="w-[17rem] md:w-[17.9rem] lg:w-[38rem] lg:translate-y-[1.8rem]"
+            className="w-[17rem] duration-200 ease-in-out group-hover:scale-[1.05] md:w-[17.9rem] lg:w-[38rem] lg:translate-y-[1.8rem]"
             alt="zx9 speaker"
           />
         </picture>

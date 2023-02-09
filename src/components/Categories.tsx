@@ -47,7 +47,7 @@ export default function Categories({ className, onClick }: Props) {
           {image && (
             <img
               src={image}
-              className="row-[1/3] w-1/2 max-w-[22.4rem] md:w-3/4 md:self-center"
+              className="row-[1/3] w-1/2 max-w-[22.4rem] duration-200 ease-in-out group-hover:-translate-y-3 md:w-3/4 md:self-center"
               alt={`${name} category`}
             />
           )}
