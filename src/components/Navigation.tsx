@@ -78,7 +78,10 @@ export default function Navigation({ transparent = false }: Props) {
             )}
           </button>
         </div>
-        <nav className="absolute top-1/2 left-1/2 hidden -translate-y-1/2 -translate-x-1/2 items-center justify-center gap-[3.4rem] pb-[0.4rem] lg:flex">
+        <nav
+          aria-label="main-nav"
+          className="absolute top-1/2 left-1/2 hidden -translate-y-1/2 -translate-x-1/2 items-center justify-center gap-[3.4rem] pb-[0.4rem] lg:flex"
+        >
           {navigation.map(({ name, path }) => (
             <Link
               key={path}
@@ -97,6 +100,7 @@ export default function Navigation({ transparent = false }: Props) {
         <div className="lg:hidden">
           <nav
             ref={navRef}
+            aria-label="mobile-nav"
             className="animate-fadeIn rounded-b-[0.8rem] bg-white"
           >
             <Categories

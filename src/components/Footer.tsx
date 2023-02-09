@@ -6,9 +6,17 @@ import { ReactComponent as IconInstagram } from '@/assets/shared/desktop/icon-in
 import { navigation } from '@/navigation';
 
 const socialMedia = [
-  { Component: IconFacebook, url: 'facebook' },
-  { Component: IconTwitter, url: 'twitter' },
-  { Component: IconInstagram, url: 'instagram' },
+  {
+    Component: IconFacebook,
+    url: 'https://www.facebook.com/',
+    ariaLabel: 'facebook',
+  },
+  { Component: IconTwitter, url: 'https://twitter.com/', ariaLabel: 'twitter' },
+  {
+    Component: IconInstagram,
+    url: 'https://instagram.com/',
+    ariaLabel: 'instagram',
+  },
 ];
 
 export default function Footer() {
@@ -21,7 +29,10 @@ export default function Footer() {
           alt="audiophile logo"
           className="md:col-[1/-1] lg:col-[1/2]"
         />
-        <nav className="flex flex-col items-center gap-[1.6rem] md:col-[1/-1] md:my-[3.2rem] md:flex-row md:gap-[3.4rem] lg:col-[-2/-1] lg:my-0 lg:mb-[3.6rem] lg:justify-self-end">
+        <nav
+          aria-label="footer-nav"
+          className="flex flex-col items-center gap-[1.6rem] md:col-[1/-1] md:my-[3.2rem] md:flex-row md:gap-[3.4rem] lg:col-[-2/-1] lg:my-0 lg:mb-[3.6rem] lg:justify-self-end"
+        >
           {navigation.map(({ name, path }) => (
             <Link
               key={path}
@@ -42,8 +53,13 @@ export default function Footer() {
           Copyright 2021. All Rights Reserved
         </p>
         <div className="flex items-center justify-center gap-[1.6rem] md:col-[-2/-1] md:row-[-2/-1] lg:row-[-3/-2] lg:place-self-end">
-          {socialMedia.map(({ Component, url }) => (
-            <a href={url} key={url} className="[&>svg>path]:hover:fill-orange">
+          {socialMedia.map(({ Component, url, ariaLabel }) => (
+            <a
+              href={url}
+              key={url}
+              aria-label={ariaLabel}
+              className="[&>svg>path]:hover:fill-orange"
+            >
               <Component className="[&>path]:duration-200 [&>path]:ease-in-out" />
             </a>
           ))}

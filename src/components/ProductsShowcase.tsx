@@ -44,7 +44,7 @@ export default function ProductsShowcase() {
 
       <div className="flex h-[32rem] items-center rounded bg-gray/20 bg-[url('@/assets/home/mobile/image-speaker-zx7.jpg')] bg-cover bg-right bg-no-repeat px-[2.4rem] md:bg-[url('@/assets/home/tablet/image-speaker-zx7.jpg')] md:px-[6.2rem] lg:bg-[url('@/assets/home/desktop/image-speaker-zx7.jpg')] lg:px-[9.5rem]">
         <div className="grid gap-[3.2rem]">
-          <h4 className="h4 text-black">ZX7 SPEAKER</h4>
+          <h3 className="h4 text-black">ZX7 SPEAKER</h3>
           <Link to={productsPaths.zx7} className="btn-outline">
             See product
           </Link>
@@ -59,7 +59,7 @@ export default function ProductsShowcase() {
           imageStyle="w-full h-full"
         />
         <div className="grid h-full content-center gap-[3.2rem] rounded bg-light200 px-[2.4rem] py-[4.1rem] md:px-[4.1rem] lg:px-[9.5rem]">
-          <h4 className="h4 text-black">YX1 EARPHONES</h4>
+          <h3 className="h4 text-black">YX1 EARPHONES</h3>
           <Link to={productsPaths.yx1} className="btn-outline">
             See product
           </Link>

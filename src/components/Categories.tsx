@@ -31,7 +31,7 @@ type Props = {
 
 export default function Categories({ className, onClick }: Props) {
   return (
-    <section
+    <div
       className={twMerge(
         'c-container grid gap-[1.6rem] pt-[4rem] pb-[12rem] md:grid-flow-col md:grid-cols-3 md:gap-[1rem] md:py-[9.8rem] lg:gap-[3rem] lg:pt-[12rem] lg:pb-[16.8rem]',
         className
@@ -52,7 +52,7 @@ export default function Categories({ className, onClick }: Props) {
             />
           )}
           <span className="row-[3/4] grid justify-items-center pb-[2.2rem] lg:pb-[3rem]">
-            <h6 className="h6 mb-[1.7rem]">{name}</h6>
+            <span className="h6 mb-[1.7rem]">{name}</span>
             <span className="flex items-center gap-[1.2rem]">
               <span className="text-[1.3rem] font-bold uppercase leading-[1.8rem] tracking-[0.1rem] text-black/50 duration-200 ease-in-out group-hover:text-orange">
                 shop
@@ -63,6 +63,6 @@ export default function Categories({ className, onClick }: Props) {
           <div className="absolute z-[-1] row-[2/4] h-full w-full rounded bg-light200" />
         </Link>
       ))}
-    </section>
+    </div>
   );
 }
