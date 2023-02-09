@@ -1,4 +1,3 @@
-import * as _ from 'lodash-es';
 import { TCategoryLoaderData, TProductData } from '@/models';
 
 const productModules = import.meta.glob('@/data/*.json', { eager: true });
