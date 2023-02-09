@@ -39,33 +39,33 @@
     "xx59-headphones"
   ],
   "images": {
-    "cart": "/src/assets/products/product-zx9-speaker/cart/image-zx9-speaker.jpg",
+    "cart": "/products/product-zx9-speaker/cart/image-zx9-speaker.jpg",
     "category": {
-      "desktop": "/src/assets/products/product-zx9-speaker/desktop/image-category-page-preview.jpg",
-      "mobile": "/src/assets/products/product-zx9-speaker/mobile/image-category-page-preview.jpg",
-      "tablet": "/src/assets/products/product-zx9-speaker/tablet/image-category-page-preview.jpg"
+      "desktop": "/products/product-zx9-speaker/desktop/image-category-page-preview.jpg",
+      "mobile": "/products/product-zx9-speaker/mobile/image-category-page-preview.jpg",
+      "tablet": "/products/product-zx9-speaker/tablet/image-category-page-preview.jpg"
     },
     "gallery": {
       "image-gallery-1": {
-        "desktop": "/src/assets/products/product-zx9-speaker/desktop/image-gallery-1.jpg",
-        "mobile": "/src/assets/products/product-zx9-speaker/mobile/image-gallery-1.jpg",
-        "tablet": "/src/assets/products/product-zx9-speaker/tablet/image-gallery-1.jpg"
+        "desktop": "/products/product-zx9-speaker/desktop/image-gallery-1.jpg",
+        "mobile": "/products/product-zx9-speaker/mobile/image-gallery-1.jpg",
+        "tablet": "/products/product-zx9-speaker/tablet/image-gallery-1.jpg"
       },
       "image-gallery-2": {
-        "desktop": "/src/assets/products/product-zx9-speaker/desktop/image-gallery-2.jpg",
-        "mobile": "/src/assets/products/product-zx9-speaker/mobile/image-gallery-2.jpg",
-        "tablet": "/src/assets/products/product-zx9-speaker/tablet/image-gallery-2.jpg"
+        "desktop": "/products/product-zx9-speaker/desktop/image-gallery-2.jpg",
+        "mobile": "/products/product-zx9-speaker/mobile/image-gallery-2.jpg",
+        "tablet": "/products/product-zx9-speaker/tablet/image-gallery-2.jpg"
       },
       "image-gallery-3": {
-        "desktop": "/src/assets/products/product-zx9-speaker/desktop/image-gallery-3.jpg",
-        "mobile": "/src/assets/products/product-zx9-speaker/mobile/image-gallery-3.jpg",
-        "tablet": "/src/assets/products/product-zx9-speaker/tablet/image-gallery-3.jpg"
+        "desktop": "/products/product-zx9-speaker/desktop/image-gallery-3.jpg",
+        "mobile": "/products/product-zx9-speaker/mobile/image-gallery-3.jpg",
+        "tablet": "/products/product-zx9-speaker/tablet/image-gallery-3.jpg"
       }
     },
     "product": {
-      "desktop": "/src/assets/products/product-zx9-speaker/desktop/image-product.jpg",
-      "mobile": "/src/assets/products/product-zx9-speaker/mobile/image-product.jpg",
-      "tablet": "/src/assets/products/product-zx9-speaker/tablet/image-product.jpg"
+      "desktop": "/products/product-zx9-speaker/desktop/image-product.jpg",
+      "mobile": "/products/product-zx9-speaker/mobile/image-product.jpg",
+      "tablet": "/products/product-zx9-speaker/tablet/image-product.jpg"
     }
   }
 }
