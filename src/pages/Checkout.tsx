@@ -2,7 +2,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GoBackButton from '@/components/GoBackButton';
 import RadioInput from '@/components/RadioInput';
@@ -10,6 +10,7 @@ import TextInput from '@/components/TextInput';
 import Summary from '@/components/Summary';
 import useCart from '@/features/cartStore';
 import cashOnDeliveryIcon from '@/assets/checkout/icon-cash-on-delivery.svg';
+import Confirmation from '@/components/Confirmation';
 
 const paymentMethods = {
   eMoney: 'e-Money',
@@ -41,15 +42,22 @@ type TCheckoutForm = yup.InferType<typeof Schema>;
 
 export default function Checkout() {
   const cart = useCart((state) => state.cart);
+  const removeAll = useCart((state) => state.removeAll);
   const navigate = useNavigate();
+  const [isConfirmed, setIsConfirmed] = useState(false);
   const methods = useForm<TCheckoutForm>({
     resolver: yupResolver(Schema),
     defaultValues: {
       paymentMethod: paymentMethods.eMoney,
     },
   });
-  const onSubmit = (data: unknown) => console.log(data);
+  const onSubmit = () => setIsConfirmed(true);
   const paymentMethod = methods.watch('paymentMethod');
+
+  const handleConfirmation = () => {
+    setIsConfirmed(false);
+    removeAll();
+  };
 
   useEffect(() => {
     if (cart.length === 0) {
@@ -58,7 +66,7 @@ export default function Checkout() {
   }, [cart.length, navigate]);
 
   return (
-    <div className="c-container mb-[9.7rem] grid gap-[3.2rem] lg:grid-cols-[0.68fr_0.32fr] lg:items-start">
+    <div className="c-container relative mb-[9.7rem] grid gap-[3.2rem] lg:grid-cols-[0.68fr_0.32fr] lg:items-start">
       <GoBackButton className="mb-[-0.8rem] justify-self-start lg:col-span-2" />
       <section className="rounded bg-white px-[2.4rem] py-[2.4rem] md:px-[2.8rem] md:py-[3rem]">
         <h2 className="h2-alt mb-[3.2rem] text-black md:mb-[4rem]">Checkout</h2>
@@ -152,6 +160,7 @@ export default function Checkout() {
           CONTINUE & PAY
         </button>
       </section>
+      {isConfirmed && <Confirmation onClose={handleConfirmation} />}
     </div>
   );
 }

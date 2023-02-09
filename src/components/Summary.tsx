@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import useCart from '@/features/cartStore';
 import useProducts from '@/hooks/useProducts';
 import { formatPrice } from '@/utils/utils';
+import SummaryItem from '@/components/SummaryItem';
 
 type Props = {
   className?: string;
@@ -28,26 +29,7 @@ export default function Summary({ className }: Props) {
             const product = getProduct(id);
             if (product) {
               return (
-                <div key={id} className="flex items-center">
-                  <div className="relative mr-[1.6rem] h-[6.4rem] w-[6.4rem] flex-shrink-0 overflow-hidden rounded bg-light200">
-                    <img
-                      src={product.images.product.mobile}
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
-                      alt="asad"
-                    />
-                  </div>
-                  <div className="grid flex-grow">
-                    <div className="flex justify-between">
-                      <span className="text-cart">{product.cartName}</span>
-                      <span className="text-cart font-bold lowercase text-black/50">
-                        x{quantity}
-                      </span>
-                    </div>
-                    <span className="text-cart text-black/50">
-                      $ {formatPrice(product.price)}
-                    </span>
-                  </div>
-                </div>
+                <SummaryItem key={id} quantity={quantity} product={product} />
               );
             }
             return null;
